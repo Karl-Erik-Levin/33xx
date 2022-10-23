@@ -1,0 +1,79 @@
+; tmrDrvISR.arm - Dataton 3397 Transponder 
+;
+; Wrapper for the milisecond timer driver interrupt service routine.  This can cause a
+; context switch so requires an assembly wrapper.
+;
+; Created 09-09-24	Kalle
+;
+; (C) Copyright Dataton AB 2009, All Rights Reserved
+;
+
+		.text		
+		.align 4
+		.nothumb
+		
+		.need usTimerISR
+		.need vTaskIncrementTick
+		.need vTaskSwitchContext
+		
+		.globl usTimerISREntry
+
+; Wrapper for the serial port interrupt service routine.  This can cause a
+; context switch so requires an assembly wrapper.
+
+
+#if !defined(BOOTLOADER)
+
+#include "Atmel/AT91SAM7S256_inc.h"
+#include "ISR_Support.h"		// Defines the portSAVE_CONTEXT and portRESTORE_CONTEXT macros.
+
+usTimerISREntry:
+	portSAVE_CONTEXT			; Save the context of the current task.
+	bl	usTimerISR				; Call the tmrDrv ISR routine.
+
+	#if (FREERTOS_TIMER == TC1)
+	  bl	vFreeRTOSTimerCall		; Increment the tick count - this may wake a task.
+	#endif	// FREERTOS_TIMER
+
+	LDR	R14, =AT91C_BASE_AIC	; Mark the End of Interrupt on the AIC
+	STR	R14, [R14, #AIC_EOICR]
+	
+	portRESTORE_CONTEXT			; Restore the context of the current task -
+								; which may be different to the task that
+								; was interrupted.
+						
+#else
+
+usTimerISREntry:
+
+;- Manage Exception Entry
+;- Adjust and save LR_irq in IRQ stack
+            sub         lr, lr, #4
+            stmfd       sp!, {lr}
+
+;- Save SPSR need to be saved for nested interrupt
+            mrs         r14, SPSR
+            stmfd       sp!, {r14}
+
+;- Save and r0 in IRQ stack
+            stmfd       sp!, {r0}
+
+;- Save scratch/used registers and LR in User Stack
+           stmfd       sp!, { r1-r3, r12, r14}
+
+;- Branch to the routine pointed by the AIC_IVR
+			bl	usTimerISR			; Call the ISR routine.
+
+;- Restore scratch/used registers and LR from User Stack
+            ldmia       sp!, { r1-r3, r12, r14}
+
+;- Restore r0 from IRQ stack
+            ldmia       sp!, {r0}
+
+;- Restore SPSR_irq from IRQ stack
+            ldmia       sp!, {r14}
+
+;- Restore adjusted  LR_irq from IRQ stack directly in the PC
+            ldmia       sp!, {pc}^
+
+#endif

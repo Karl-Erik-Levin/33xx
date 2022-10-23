@@ -1,0 +1,10 @@
+#!gbuild
+[Library]
+	-o objs\dbg_3356.a
+3356\pickupAppl.c
+3356\puusbAppl.c
+3356\cacheHdlr.c
+3356\ConvertUTF.c
+3356\ID3Parser.c
+3356\usbVenReqHdlr.c
+3356\WavWriter.c

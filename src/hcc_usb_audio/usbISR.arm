@@ -1,0 +1,24 @@
+		SECTION .text:CODE:NOROOT(4)
+		ARM
+
+		EXTERN	usbd_it_handler
+		PUBLIC	usbDrvISREntry
+
+; Defines the portSAVE_CONTEXT and portRESTORE_CONTEXT macros.
+#include "ISR_Support.h"
+#include "atmel/at91sam7s256_inc.h"
+
+usbDrvISREntry:
+	portSAVE_CONTEXT		; Save the context of the current task.
+;TODO: the next two lines are not needed if the AIC is not in protected mode
+  ldr r0, =AT91C_BASE_AIC
+  str r0, [r0, #AIC_IVR]
+
+  bl	usbd_it_handler			; Call the ISR routine.
+  ldr r0, =AT91C_BASE_AIC
+  str r0, [r0, #AIC_EOICR]
+	portRESTORE_CONTEXT		; Restore the context of the current task -
+							; which may be different to the task that
+							; was interrupted.
+
+   end

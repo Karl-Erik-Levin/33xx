@@ -1,0 +1,24 @@
+#!gbuild
+[Library]
+	-o objs\dbg_driver.a
+driver\adcDrv.c
+driver\audDrv.c
+driver\audDrvISR.arm
+driver\cpuDrv.c
+driver\i2cDrv.c
+driver\irdaDrv.c
+driver\irdaDrvISR.arm
+driver\hpcDrv.c
+driver\ledDrv.c
+driver\pwrDrv.c
+driver\pwrDrvISR.arm
+driver\rtcDrv.c
+driver\rtcDrvISR.arm
+driver\srlDrv.c
+driver\tmrDrv.c
+driver\tmrDrvISR.arm
+	-list
+driver\hccfat\mmc.c
+driver\hccfat\drv.c
+driver\hccusb\usb.c
+driver\hccusb\usbISR.arm

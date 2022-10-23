@@ -1,0 +1,17 @@
+/* norm.pch    - Pre-compiled header file
+
+© Copyright Dataton AB 2009, All Rights Reserved
+
+	Created: 09-09-23 	Kalle Levin
+
+*/
+
+#include "3356comdef.h"
+
+#define DEBUG		1			// Enable trace and assert
+#define HARDWARE	3356		// Pickup hardware
+//#define HARDWARE	3397		// Transponder hardware
+
+//#define TO_WAV_FILE
+
+#pragma precompile_target "norm.mch"

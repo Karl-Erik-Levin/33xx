@@ -1,0 +1,29 @@
+#!gbuild
+primaryTarget=arm_standalone.tgt
+[Project]
+	-bsp sam7sek
+	-G
+#!	-DENABLE_CHARGE_ON_INIT				// PoweDrv.c
+#!	-DOPTION_DEBUG_MEMORY_ALLOCATION	// heap_3.c tasks.c
+	-object_dir=objs
+	:outputDir=objs
+	-delete
+	:sourceDir=..\src
+	-I..\src\include
+	-I..\src\Platform\FreeRTOS\portable\GHS\AT91SAM7xx
+	--diag_suppress 161
+	--diag_suppress 188
+	--diag_suppress 191
+	--diag_suppress 177
+	-apcs=/inter
+	-cpu=arm7tm
+	-no_callgraph
+	-DGHS_AT91SAM7
+	-DPICKUP=1
+	-DFILEOPENOPT
+	-DPIT=547
+	-DTC1=765
+	-DFREERTOS_TIMER=TC1
+	-DHARDWARE=3356
+resource\default.con
+dbg.gpj		[Program]

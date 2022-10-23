@@ -1,0 +1,17 @@
+#!gbuild
+[Program]
+	-DDEBUG=1
+	-o objs\3356.firm.dbg.ghs
+	:postexecShell='gsize objs\\3356.firm.dbg.ghs'
+	:postexecShell='ghexfile -hex86 -o objs\\3356.firm.dbg.hex objs\\3356.firm.dbg.ghs '
+	-e __reset
+	-map=objs\3356.firm.dbg.map
+3356_main.c
+stub.c
+runtime\Cstartup.arm
+runtime\Cstartup_SAM7.c
+dbg_3356.gpj		[Library]
+dbg_driver.gpj		[Library]
+dbg_platform.gpj		[Library]
+spirit\Lib_MP3D_ARM7.a
+3356.ld

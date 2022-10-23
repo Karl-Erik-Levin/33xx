@@ -1,0 +1,37 @@
+; irdaDrvISR.arm - Dataton 3397 Transponder 
+;
+; Wrapper for the IrDa driver interrupt service routine.  This can cause a
+; context switch so requires an assembly wrapper.
+;
+; Created 09-09-24	Kalle
+;
+; (C) Copyright Dataton AB 2009, All Rights Reserved
+;
+
+
+		.text
+		.align 4
+		.nothumb
+
+		.need irdaDrvRxISR
+		.globl irdaDrvRxISREntry
+		.need irdaDrvTxISR
+		.globl irdaDrvTxISREntry
+
+
+; Defines the portSAVE_CONTEXT and portRESTORE_CONTEXT macros.
+#include "ISR_Support.h"
+
+
+irdaDrvRxISREntry:
+	portSAVE_CONTEXT			; Save the context of the current task.
+	bl	irdaDrvRxISR			; Call the ISR routine.
+	portRESTORE_CONTEXT			; Restore the context of the current task -
+						; which may be different to the task that
+						; was interrupted.
+
+irdaDrvTxISREntry:
+	portSAVE_CONTEXT			; Save the context of the current task.
+	bl	irdaDrvTxISR			; Call the ISR routine.
+	portRESTORE_CONTEXT			; Restore the context of the current task -
+

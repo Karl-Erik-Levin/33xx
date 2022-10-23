@@ -1,0 +1,1063 @@
+Link Date:	Tue Sep 22 16:40:05 2015
+Host OS:	GHS_WIN32
+Version:	ELXR 4.0 (c) 1998-2003 Green Hills Software    Build: May 30 2007
+
+
+Load Map Tue Sep 22 16:40:05 2015
+Image Summary
+
+  Section              Base      Size(hex)    Size(dec)  SecOffs
+  .picbase             00200000  00000000            0   00002c0
+  .decoder             00200000  000022e0         8928   00002c0
+  .flasher             002022e0  0000033c          828   00025a0
+  .sdabase             0020261c  00000000            0   00028dc
+  .sbss                0020261c  00000000            0   00028dc
+  .sdata               0020261c  00000000            0   00028dc
+  .data                0020261c  00000114          276   00028dc
+  .bss                 00202730  000048d8        18648   00029f0
+  .heap                00207010  000088b8        35000   00029f8
+  .stack               0020f8d0  00000200          512   0002a00
+  .reset               00010000  000002dc          732   0002a00
+  .appl                000102dc  00015134        86324   0002cdc
+  .linklibs            00025410  00000e64         3684   0017e10
+  .decoderROM          00026274  00003ac8        15048   0018c74
+  .text                00029d3c  00003bf4        15348   001c73c
+  .syscall             0002d930  00000008            8   0020330
+  .intercall           0002d938  00000000            0   0020338
+  .interfunc           0002d938  00000004            4   0020338
+  .rodata              0002d940  000028bc        10428   0020340
+  .sdata2              000301fc  00000000            0   0022bfc
+  .secinfo             000301fc  00000048           72   0022bfc
+  .fixaddr             00030244  00000020           32   0022c44
+  .fixtype             00030264  00000008            8   0022c64
+  .constdata           0003026c  00000000            0   0022c6c
+  .ROM.decoder         0003026c  000022e0         8928   00002c0
+  .ROM.flasher         0003254c  0000033c          828   00025a0
+  .ROM.sdata           00032888  00000000            0   00028dc
+  .ROM.data            00032888  00000114          276   00028dc
+
+Load Map Tue Sep 22 16:40:05 2015
+Module Summary
+
+  Origin+Size    Section          Module
+00029d3c+0000a0  .text            crt0.o
+00029ddc+0001b4  .text            3356_main.o
+0002d940+000059  .rodata          3356_main.o
+00010000+0001cc  .reset           Cstartup.o
+000101cc+000110  .text            Cstartup_SAM7.o
+00029f90+00000c  .text            libmulti.a
+0020261c+000004  .data            libmulti.a
+00029f9c+000604  .text            dbg_3356.a(puusbAppl.o)
+0002d999+000062  .rodata          dbg_3356.a(puusbAppl.o)
+00202730+000018  .bss             dbg_3356.a(puusbAppl.o)
+0002a5a0+0008d8  .text            dbg_3356.a(pickupAppl.o)
+0002d9fb+00029c  .rodata          dbg_3356.a(pickupAppl.o)
+00202748+000008  .bss             dbg_3356.a(pickupAppl.o)
+0002ae78+000598  .text            dbg_3356.a(usbVenReqHdlr.o)
+0002dc97+000025  .rodata          dbg_3356.a(usbVenReqHdlr.o)
+00202750+000028  .bss             dbg_3356.a(usbVenReqHdlr.o)
+0002b410+00030c  .text            dbg_3356.a(cacheHdlr.o)
+0002dcbc+00001d  .rodata          dbg_3356.a(cacheHdlr.o)
+0002b71c+000390  .text            dbg_3356.a(ID3Parser.o)
+0002dcd9+000008  .rodata          dbg_3356.a(ID3Parser.o)
+000102dc+003184  .text            dbg_driver.a(usb.o)
+0002dce2+00000a  .rodata          dbg_driver.a(usb.o)
+00202778+0000e4  .bss             dbg_driver.a(usb.o)
+00013460+00133c  .text            dbg_driver.a(mmc.o)
+0002dcec+000210  .rodata          dbg_driver.a(mmc.o)
+0020285c+000058  .bss             dbg_driver.a(mmc.o)
+0001479c+000244  .text            dbg_driver.a(tmrDrv.o)
+002028b4+00000c  .bss             dbg_driver.a(tmrDrv.o)
+000149e0+0003c8  .text            dbg_driver.a(rtcDrv.o)
+002028c0+000011  .bss             dbg_driver.a(rtcDrv.o)
+00014da8+000418  .text            dbg_driver.a(pwrDrv.o)
+0002defc+000005  .rodata          dbg_driver.a(pwrDrv.o)
+00202620+000002  .data            dbg_driver.a(pwrDrv.o)
+002028d4+000018  .bss             dbg_driver.a(pwrDrv.o)
+000151c0+0002c8  .text            dbg_driver.a(ledDrv.o)
+00202622+00000d  .data            dbg_driver.a(ledDrv.o)
+00015488+000170  .text            dbg_driver.a(hpcDrv.o)
+002028ec+000002  .bss             dbg_driver.a(hpcDrv.o)
+000155f8+00027c  .text            dbg_driver.a(i2cDrv.o)
+00202630+000020  .data            dbg_driver.a(i2cDrv.o)
+002028f0+000004  .bss             dbg_driver.a(i2cDrv.o)
+00015874+000048  .text            dbg_driver.a(cpuDrv.o)
+000158bc+000668  .text            dbg_driver.a(audDrv.o)
+0002df01+00002d  .rodata          dbg_driver.a(audDrv.o)
+002028f4+000006  .bss             dbg_driver.a(audDrv.o)
+00015f24+0005f4  .text            dbg_driver.a(adcDrv.o)
+0002df2e+000005  .rodata          dbg_driver.a(adcDrv.o)
+002028fc+00002e  .bss             dbg_driver.a(adcDrv.o)
+00016518+000080  .text            dbg_driver.a(usbISR.o)
+00016598+00043c  .text            dbg_driver.a(drv.o)
+000169d4+000090  .text            dbg_driver.a(tmrDrvISR.o)
+00016a64+000080  .text            dbg_driver.a(rtcDrvISR.o)
+00016ae4+000080  .text            dbg_driver.a(pwrDrvISR.o)
+00016b64+000080  .text            dbg_driver.a(audDrvISR.o)
+00016e08+000098  .text            dbg_platform.a(trace.o)
+0002df33+00002b  .rodata          dbg_platform.a(trace.o)
+0020292a+000100  .bss             dbg_platform.a(trace.o)
+00016ea0+000624  .text            dbg_platform.a(pubFileUtil.o)
+0002df5e+000090  .rodata          dbg_platform.a(pubFileUtil.o)
+002022e0+00033c  .text            dbg_platform.a(flash.o)
+000174c4+000020  .text            dbg_platform.a(byteSwap.o)
+0002dff0+0000ec  .rodata          dbg_platform.a(mst_usb_config.o)
+000174e4+001718  .text            dbg_platform.a(mst_main.o)
+0002e0dc+000034  .rodata          dbg_platform.a(mst_main.o)
+00202a2c+00003c  .bss             dbg_platform.a(mst_main.o)
+00018bfc+000130  .text            dbg_platform.a(port_f.o)
+00202650+000004  .data            dbg_platform.a(port_f.o)
+00018d2c+000784  .text            dbg_platform.a(fat_m.o)
+000194b0+00336c  .text            dbg_platform.a(fat.o)
+0002e110+00001f  .rodata          dbg_platform.a(fat.o)
+0001c81c+0048a0  .text            dbg_platform.a(common.o)
+0002e130+00007d  .rodata          dbg_platform.a(common.o)
+000210bc+000dfc  .text            dbg_platform.a(tasks.o)
+00202a68+0000ec  .bss             dbg_platform.a(tasks.o)
+0002e1ad+000005  .rodata          dbg_platform.a(tasks.o)
+00021eb8+000770  .text            dbg_platform.a(queue.o)
+00022628+000140  .text            dbg_platform.a(list.o)
+00022768+000054  .text            dbg_platform.a(heap_3.o)
+000227bc+0001e0  .text            dbg_platform.a(port.o)
+00202654+000008  .data            dbg_platform.a(port.o)
+0002299c+000154  .text            dbg_platform.a(portasm.o)
+00022af0+0001f4  .text            dbg_platform.a(setMng.o)
+00202b54+00001c  .bss             dbg_platform.a(setMng.o)
+00022ce4+00004c  .text            dbg_platform.a(pwrMng.o)
+00202b70+000001  .bss             dbg_platform.a(pwrMng.o)
+00022d30+000094  .text            dbg_platform.a(evtMng.o)
+00202b74+000004  .bss             dbg_platform.a(evtMng.o)
+00022dc4+000ca4  .text            dbg_platform.a(audMng.o)
+0002e1b2+0000b2  .rodata          dbg_platform.a(audMng.o)
+00202b78+002464  .bss             dbg_platform.a(audMng.o)
+00023a68+0004a0  .text            dbg_platform.a(mp3Util.o)
+0002e264+00024d  .rodata          dbg_platform.a(mp3Util.o)
+0020265c+00003c  .data            dbg_platform.a(mp3Util.o)
+00023f08+000080  .text            dbg_platform.a(crc16CCITT.o)
+00023f88+001488  .text            dbg_platform.a(simple_scsi.o)
+00202698+00001c  .data            dbg_platform.a(simple_scsi.o)
+00204fdc+000030  .bss             dbg_platform.a(simple_scsi.o)
+00025410+0000c4  .text            libansi.a(ccstrncp.o)
+000254d4+000030  .text            libansi.a(ccstrncm.o)
+00025504+000018  .text            libansi.a(ccstrlen.o)
+0002551c+000058  .text            libansi.a(ccstrcpy.o)
+00025574+0000d0  .text            libansi.a(ccstrcmp.o)
+00025644+0000c4  .text            libansi.a(ccmemmov.o)
+00025708+000028  .text            libansi.a(ccmemcmp.o)
+00025730+000080  .text            libansi.a(ccsprntf.o)
+000257b0+00039c  .text            libansi.a(ccmalloc.o)
+0020500c+000024  .bss             libansi.a(ccmalloc.o)
+00025b4c+000018  .text            libansi.a(ccexit.o)
+00025b64+000710  .text            libansi.a(ccvsprnt.o)
+002026b4+00005c  .data            libansi.a(ccvsprnt.o)
+0002baac+000118  .text            libind.a(ind64_mul64.o)
+0002bbc4+0000f8  .text            libind.a(ind64_div64.o)
+0002bcbc+000390  .text            libind.a(indsin.o)
+0002c04c+000014  .text            libind.a(inddrsb.o)
+0002c060+000064  .text            libind.a(ind32tod.o)
+0002c0c4+0000c8  .text            libind.a(inddto32.o)
+0002c18c+00027c  .text            libind.a(indddiv.o)
+0002c408+00019c  .text            libind.a(inddmul.o)
+0002c5a4+000310  .text            libind.a(inddadd.o)
+0002c8b4+000160  .text            libind.a(ind64_udiv64.o)
+0002ca14+0000b0  .text            libstartup.a(ind_mset.o)
+0002cac4+000240  .text            libstartup.a(ind_mcpy.o)
+0002cd04+000400  .text            libstartup.a(ind_crt0.o)
+0002d104+0000d8  .text            libstartup.a(ind_uzip.o)
+0002d1dc+000058  .text            libsys.a(ind_thrd.o)
+0002d234+00006c  .text            libsys.a(ind_heap.o)
+00205030+000004  .bss             libsys.a(ind_heap.o)
+0002d2a0+00008c  .text            libsys.a(ind_exit.o)
+00202710+000004  .data            libsys.a(ind_exit.o)
+00205034+000004  .bss             libsys.a(ind_exit.o)
+00030244+000004  .fixaddr         libsys.a(ind_exit.o)
+00030264+000001  .fixtype         libsys.a(ind_exit.o)
+0002d32c+00005c  .text            libsys.a(ind_errn.o)
+0002d930+000008  .syscall         libsys.a(ind_dots.o)
+0002d388+000020  .text            libsys.a(ind_call.o)
+0002d3a8+0000ec  .text            libsys.a(ind_crt1.o)
+00202714+00001c  .data            libsys.a(ind_crt1.o)
+00030248+00001c  .fixaddr         libsys.a(ind_crt1.o)
+00030265+000007  .fixtype         libsys.a(ind_crt1.o)
+0002d494+00005c  .text            libarch.a(indbsch2.o)
+0002d4f0+00001c  .text            libarch.a(indarchj.o)
+0002d50c+0000dc  .text            libarch.a(indarchi.o)
+0002d938+000004  .interfunc       libarch.a(indarch4.o)
+0002d5e8+0000e0  .text            libarch.a(indarch1.o)
+00026274+000408  .text            Lib_MP3D_ARM7.a(MP3D_main.o)
+0002667c+0008c8  .text            Lib_MP3D_ARM7.a(MP3D_layer3.o)
+00026f44+000224  .text            Lib_MP3D_ARM7.a(MP3D_header.o)
+0002e4b4+000068  .rodata          Lib_MP3D_ARM7.a(MP3D_header.o)
+00027168+0005fc  .text            Lib_MP3D_ARM7.a(MP3D_bitio.o)
+00027764+000044  .text            Lib_MP3D_ARM7.a(MP3D_rtl.o)
+000277a8+00167c  .text            Lib_MP3D_ARM7.a(MP3D_layers12.o)
+0002e51c+000144  .rodata          Lib_MP3D_ARM7.a(MP3D_layers12.o)
+00028e24+0003e0  .text            Lib_MP3D_ARM7.a(MP3D_ARM7M_stereo.o)
+0002e660+00004c  .rodata          Lib_MP3D_ARM7.a(MP3D_ARM7M_stereo.o)
+00200e4c+000b44  .text            Lib_MP3D_ARM7.a(MP3D_ARM7M_IMDCT3612.o)
+0002e6ac+0000a4  .rodata          Lib_MP3D_ARM7.a(MP3D_ARM7M_IMDCT3612.o)
+00201990+00074c  .text            Lib_MP3D_ARM7.a(MP3D_ARM7M_huffdec.o)
+0002e750+0002d0  .rodata          Lib_MP3D_ARM7.a(MP3D_ARM7M_huffdec.o)
+002020dc+000140  .text            Lib_MP3D_ARM7.a(MP3D_ARM7M_dealias.o)
+0002ea20+000040  .rodata          Lib_MP3D_ARM7.a(MP3D_ARM7M_dealias.o)
+00029204+000138  .text            Lib_MP3D_ARM7.a(MP3D_ARM7_unpackSFB.o)
+0002ea60+0000b6  .rodata          Lib_MP3D_ARM7.a(MP3D_ARM7_unpackSFB.o)
+0002933c+0002cc  .text            Lib_MP3D_ARM7.a(MP3D_ARM7_SideInfo.o)
+00029608+000310  .text            Lib_MP3D_ARM7.a(MP3D_ARM7_scfdec.o)
+0002eb16+000054  .rodata          Lib_MP3D_ARM7.a(MP3D_ARM7_scfdec.o)
+0020221c+0000c4  .text            Lib_MP3D_ARM7.a(MP3D_ARM7_reorder.o)
+0002eb6a+000050  .rodata          Lib_MP3D_ARM7.a(MP3D_ARM7_reorder.o)
+00029918+00012c  .text            Lib_MP3D_ARM7.a(MP3D_ARM7_CopyPCMSamples.o)
+00029a44+000194  .text            Lib_MP3D_ARM7.a(MP3D_ARM7_bitio.o)
+00200000+000e4c  .text            Lib_MP3D_ARM7.a(MP3D_ARM7M_synfilt.o)
+0002ebc0+00050c  .rodata          Lib_MP3D_ARM7.a(MP3D_ARM7M_synfilt.o)
+0002f0cc+00112c  .rodata          Lib_MP3D_ARM7.a(MP3D_htabs.o)
+00029bd8+000164  .text            Lib_MP3D_ARM7.a(MP3D_ARM7_ScfSize.o)
+0002d6c8+000268  .text            dbg_3356.a(WavWriter.o)
+000301f8+000004  .rodata          dbg_3356.a(WavWriter.o)
+00016be4+000224  .text            dbg_driver.a(srlDrv.o)
+00205038+000001  .bss             dbg_driver.a(srlDrv.o)
+
+Load Map Tue Sep 22 16:40:05 2015
+Global Symbols (sorted alphabetically)
+
+ .reset           0001010c AT91F_Default_FIQ_handler
+ .reset           00010110 AT91F_Default_IRQ_handler
+ .flasher         0020251c AT91F_Flash_Enable_Brownout
+ .flasher         002022e0 AT91F_Flash_Unlock
+ .flasher         00202384 AT91F_Flash_Write
+ .flasher         0020249c AT91F_Flash_Write_all
+ .reset           000101cc AT91F_LowLevelInit
+ .reset           00010114 AT91F_Spurious_handler
+ .text            0002b6a4 AddToDb..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CcacheHdlr.
+ .rodata          0002dcfc CRCtbl
+ .appl            000174c4 CalcDiff
+                  00000000 DefaultSignalHandler
+ .appl            00022d88 EM_GetNextEvent
+ .appl            00022d30 EM_Init
+ .appl            00022d50 EM_PostEvent
+ .appl            00010da0 Enter_Default_State
+ .rodata          0002e144 FAT32_CS..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .text            0002d1dc GetThreadLocalStorage
+ .bss             00206af0 GlobalTLS
+                  00000000 ID3Close
+ .text            0002b7c0 ID3Next
+ .text            0002b71c ID3Open
+                  00000000 ID3ReadTagData
+ .reset           00010044 InitReset..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5CCstartup.
+ .rodata          0002d999 LEDI_Front..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .appl            000150f8 LTC3567BuckBoostEnable
+                  00000000 LTC3567BurstMode
+                  00000000 LTC3567CurrentMode
+                  00000000 LTC3567ServoVoltage
+ .text            0002b874 LocateHeader..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CID3Parser.
+ .appl            00023ab8 MP3_BytesPerMS
+ .appl            00023b28 MP3_FindFirstFrame
+                  00000000 MP3_FindFrame
+ .appl            00016e50 MyAssert
+ .appl            00016e64 MySuperAssert
+ .appl            00017444 Need2UpdateFirmware
+ .text            0002b9c8 SkipExtendedHeader..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CID3Parser.
+ .decoderROM      000263b0 SpiritMP3Decode
+ .decoderROM      00026348 SpiritMP3DecoderInit
+ .text            0002ba54 SyncsafeToNormal..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CID3Parser.
+ .appl            00016e08 TracePrintf
+ .text            0002d910 WAV_readerClose
+ .text            0002d6c8 WAV_readerOpen
+                  00000000 WAV_writeHeader..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CWavWriter.
+                  00000000 WAV_writerClose
+                  00000000 WAV_writerOpen
+                  00000000 __alt_init
+                  00000000 __cpp_exception_cleanup
+                  00000000 __cpp_exception_init
+ .text            0002c5a8 __dadd
+ .text            0002c18c __ddiv
+                  00000000 __division_by_zero
+ .text            0002c408 __dmul
+ .syscall         0002d930 __dotsyscall
+ .text            0002c04c __drsb
+ .text            0002c5a4 __dsub
+ .text            0002c0c4 __dtoi
+                  00000000 __dtoi32r
+                  00000000 __dtoi32rne
+                  00000000 __dtou
+                  00000000 __dtou32r
+                  00000000 __dtou32rne
+                  00000000 __get_eh_globals
+ .text            0002bbc4 __gh_div64
+ .text            0002d32c __gh_errno_ptr
+                  00000000 __gh_error_init
+                  00000000 __gh_float_printf
+                  00000000 __gh_get_errno
+ .linklibs        00025c5c __gh_hexout
+                  00000000 __gh_iob_init
+ .text            0002d220 __gh_lock_init
+                  00000000 __gh_long_long_printf
+ .text            0002baac __gh_mul64
+ .linklibs        00025c0c __gh_octhex_finish
+ .text            0002d364 __gh_set_errno
+                  00000000 __gh_signal_init
+ .linklibs        00025c98 __gh_strout
+ .text            0002c8b4 __gh_udiv64
+                  00000000 __gh_uns_long_long_printf
+ .linklibs        00025dd4 __gh_vsprintf
+ .linklibs        00025b64 __gh_xxdecout
+ .interfunc       0002d938 __ghsArmBLR
+ .text            0002d1f8 __ghsLock
+ .text            0002d20c __ghsUnlock
+                  00000000 __ghs_GetThreadLocalStorageItem
+                  00000000 __ghs_RestoreSignalContext
+                  00000000 __ghs_SaveSignalContext
+                  00000000 __ghs_at_exit
+ .text            0002d494 __ghs_bsearch_16
+                  00000000 __ghs_checksum
+ .text            0002d104 __ghs_decompress
+                  00000000 __ghs_enterblock_func
+                  00000000 __ghs_flock_create
+                  00000000 __ghs_flock_destroy
+                  00000000 __ghs_flock_file
+                  00000000 __ghs_ftrylock_file
+                  00000000 __ghs_funlock_file
+ .text            0002cd04 __ghs_ind_crt0
+ .text            0002d3a8 __ghs_ind_crt1
+                  00000000 __ghs_manprf_init
+                  00000000 __ghs_rambootcodeend
+                  00000000 __ghs_rambootcodestart
+                  00210000 __ghs_ramend
+                  00200000 __ghs_ramstart
+                  00000000 __ghs_rombootcodeend
+                  00000000 __ghs_rombootcodestart
+                  00041000 __ghs_romend
+                  00010000 __ghs_romstart
+ .text            0002d388 __ghs_syscall
+ .fixaddr         00030244 __ghsbegin_fixaddr
+ .fixtype         00030264 __ghsbegin_fixtype
+ .heap            00207010 __ghsbegin_heap
+ .picbase         00200000 __ghsbegin_picbase
+                  00000000 __ghsbegin_pidbase
+                  00000000 __ghsbegin_robase
+ .secinfo         000301fc __ghsbegin_secinfo
+ .secinfo         00030214 __ghsbinfo_aclear
+ .secinfo         0003022c __ghsbinfo_acopy
+ .secinfo         000301fc __ghsbinfo_clear
+ .secinfo         00030244 __ghsbinfo_comacopy
+ .secinfo         00030244 __ghsbinfo_comcopy
+ .secinfo         00030244 __ghsbinfo_comtcopy
+ .secinfo         00030214 __ghsbinfo_copy
+ .secinfo         0003022c __ghsbinfo_tcopy
+ .secinfo         00030214 __ghseinfo_clear
+ .secinfo         00030244 __ghseinfo_comcopy
+ .secinfo         00030244 __ghseinfo_copy
+ .fixaddr         00030264 __ghsend_fixaddr
+ .heap            0020f8c8 __ghsend_heap
+ .stack           0020fad0 __ghsend_stack
+ .text            0002c060 __itod
+                  00000000 __malloc_info
+ .reset           00010000 __reset
+ .text            0002d5e8 __sdiv_32_32
+                  00000000 __smod_32_32
+                  00000000 __udiv10
+ .text            0002d50c __udiv_32_32
+ .text            0002d4f0 __umod10
+ .text            0002d5d4 __umod_32_32
+                  00000000 __utod
+ .text            0002c068 __x32tod..trg.2Farm4.2Fobjs.2Flibs.2Flibind.2Find32tod.
+ .text            0002d2a0 _enter
+ .text            0002d2c0 _exit
+ .appl            000203e4 _f_abortwrite..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001ace0 _f_addentry
+ .appl            0001e9dc _f_alloccluster
+ .appl            0001f420 _f_allocnextcluster
+ .appl            0001cff8 _f_buildsectors..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001fd6c _f_check_handle
+ .appl            0001ee78 _f_checkappendlocked
+ .appl            0001edf4 _f_checklocked
+ .appl            00019654 _f_checkname..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            00019544 _f_checknameinv..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            000196bc _f_checknamewc..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            0001fc48 _f_checkreadlocked
+ .appl            0001ca28 _f_checkstatus
+ .appl            0001de34 _f_close_drive_files..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001e4c8 _f_clustertopos
+ .appl            00019e28 _f_cmp_wname
+ .appl            0001ebfc _f_dobadblock
+ .appl            0001caf4 _f_drvgetphy..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001cc2c _f_drvreadsector
+ .appl            0001cb8c _f_drvwritesector..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001f570 _f_emptywritebuffer
+ .appl            0001f0f8 _f_emptywritecache
+ .appl            00019c1c _f_findfile..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            0001a06c _f_findfilewc..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            00020fd0 _f_findopensize
+ .appl            0001a308 _f_findpath..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            0001f78c _f_fseek
+ .appl            0001c864 _f_get16bitl
+ .appl            0001c8e8 _f_get32bitl
+ .appl            0001d13c _f_getbootrecord..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001dbd8 _f_getclustervalue
+ .appl            0001e564 _f_getcurrsector
+ .appl            0001e80c _f_getdecluster
+ .appl            000194b0 _f_getdirsector
+ .appl            0001d7e4 _f_getfatsector..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001a22c _f_getfilename..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            0001abc8 _f_getintfile..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            0001cf84 _f_getmaxcluster
+ .appl            0001de88 _f_getvolume
+ .appl            0001e968 _f_initentry
+ .appl            00020f2c _f_mutex_get
+ .appl            00020f9c _f_mutex_put
+                  00000000 _f_postformat..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+                  00000000 _f_prepareformat..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001d38c _f_readbootrecord..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001ce28 _f_readsector
+ .appl            0001fad8 _f_removechain
+                  00000000 _f_resetfatentries..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+                  00000000 _f_resetrootdir..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001c8b8 _f_set16bitl
+ .appl            0001c940 _f_set32bitl
+ .appl            0001d8ac _f_setclustervalue
+ .appl            0001e85c _f_setdecluster
+ .appl            000198d8 _f_setfsname..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            00019750 _f_setnameext..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            0001ef14 _f_syncfiles
+ .appl            0001f020 _f_syncfilescontent
+ .appl            00019fb4 _f_to_string..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cfat.
+ .appl            0001fb94 _f_updatefileentry
+                  00000000 _f_writebootrecord..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            00019508 _f_writedirsector
+ .appl            0001d74c _f_writefatsector
+ .appl            0001cca0 _f_writesector
+ .appl            0001f6ec _f_writezeros
+ .linklibs        00025a00 _free..trg.2Farm4.2Fobjs.2Flibs.2Flibansi.2Fccmalloc.
+ .appl            0001c9e0 _get16bitl..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001ca04 _get32bitl..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            0001c998 _get8bit..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .appl            00013c00 _get_csd_bits
+ .appl            0001cfd0 _getsectorfromcluster..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .linklibs        000258bc _malloc..trg.2Farm4.2Fobjs.2Flibs.2Flibansi.2Fccmalloc.
+ .bss             0020503c _multiArgs
+ .data            0020261c _multibufSize
+ .bss             00206c20 _multibuffer
+ .text            00029f90 _multiend
+ .text            00029f98 _multiend2
+                  00000000 _set16bitl..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+                  00000000 _set32bitl..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+                  00000000 _set8bit..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+                  00000000 _set8bitzero..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ccommon.
+ .text            00029d3c _start
+                  00000000 _swap16
+                  00000000 _swap24
+                  00000000 _swap32
+                  00000000 _swap64
+                  00000000 _swapbytes
+ .appl            00011cf0 _usb_receive..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .appl            00010fb4 _usb_send..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .bss             0020290e accBL.adcTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv..1
+ .bss             0020290c accHP.adcTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv..0
+ .bss             00202918 accVL.adcTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv..5
+ .appl            000163f8 adcGetLevel
+ .appl            00016368 adcInit
+                  00000000 adcSleep
+ .appl            00015f24 adcTask..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv.
+                  00000000 adcWake
+ .appl            00015be8 audClose
+ .appl            000158bc audDrvISR
+ .appl            00016b64 audDrvISREntry
+ .appl            00015de0 audFlush
+                  00000000 audGetBufferCount
+ .appl            00015ba8 audInit
+ .appl            00015ab8 audInitInt..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CaudDrv.
+ .appl            00015e24 audPlayBuffer
+ .bss             00202b7c audSem..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+                  00000000 audSetMute
+ .appl            00015cdc audSetPlaybackRate
+ .appl            00015c48 audSetVolume
+ .appl            00015d78 audSleep
+ .bss             002028f9 audSleeping..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CaudDrv.
+ .appl            00015c00 audSpeakerAmp
+                  00000000 audWake
+ .appl            00022f88 audioVolume..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .bss             00202b70 battChargeEnabled..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CpwrMng.
+ .bss             00205470 buffers
+ .text            0002b524 cacheClose
+ .text            0002b50c cacheInit
+ .text            0002b530 cacheLookup
+ .text            0002b5c4 cacheRebuild..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CcacheHdlr.
+ .appl            00016ea0 calcCRC..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CpubFileUtil.
+                  00000000 calloc
+ .appl            000124f0 cb_set_address..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .bss             00202900 channelLastSample..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv.
+ .text            0002a310 chargeAllowed..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .text            0002ac78 closeFileSystem..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl.
+                  00000000 clr_dtog_rx
+ .appl            00010f50 clr_dtog_tx
+ .bss             00202748 cnt1.ledStatus.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl..0
+ .bss             0020273c cnt1.ledStatus.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl..0
+ .bss             0020274c cnt2.ledStatus.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl..1
+ .bss             00202740 cnt2.ledStatus.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl..1
+ .bss             0020291b cntBL.adcTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv..4
+ .bss             0020291a cntHP.adcTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv..3
+ .bss             0020291c cntVL.adcTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv..7
+ .text            0002af20 controlBeginRXData..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr.
+ .text            0002aeb8 controlSendStall..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr.
+ .appl            00015874 cpuForceWatchdogReset
+ .appl            0001587c cpuInitWatchDog
+ .appl            00015894 cpuKickWatchDog
+                  00000000 cpuSleep
+ .appl            00023f08 crc16CCITT
+ .appl            00022dd4 createSinSound..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .bss             00202a2c cur_buf..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cmst_main.
+ .text            0002c0d8 d32..trg.2Farm4.2Fobjs.2Flibs.2Flibind.2Finddto32.
+ .bss             00205474 datatonApplCallback
+ .bss             0020546c datatonVendorCallback
+ .bss             0020506c dbg_mtraces
+ .data            00202630 deviceFlags..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Ci2cDrv.
+                  00000000 disable_ep_rx
+ .appl            00010eb8 disable_ep_tx
+ .text            0002a974 dispatchKBEvent..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl.
+ .text            0002a28c dispatchKBEvent..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .text            0002a22c dispatchVREvent..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .text            00029ddc drvInit..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5C3356_main.
+ .data            00202650 dwrand..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cport_f.
+ .bss             00206bd4 environ
+ .bss             00206bd8 ep0_buffer
+ .bss             00206be0 ep1_buffer
+ .bss             00206c00 ep2_buffer
+ .rodata          0002e0cc ep_buffers
+ .bss             0020277c ep_info..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .bss             00206bd0 errno
+ .bss             002028e0 evt.pwrTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CpwrDrv..4
+ .bss             00202b74 evtQueue..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CevtMng.
+ .linklibs        00025b4c exit
+ .appl            00020d34 f_enterFS
+ .bss             00205478 f_filesystem
+ .appl            00018bfc f_getcurrenttimedate
+                  00000000 f_getrand
+ .appl            00018c8c f_mutex_create
+ .appl            00018ca8 f_mutex_delete
+ .appl            00018cc4 f_mutex_get
+ .appl            00018cec f_mutex_put
+ .appl            00020e58 f_releaseFS
+ .bss             00206a44 fat_gmutex
+ .appl            00017990 fill_sbw..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cmst_main.
+ .appl            0001257c find_ep
+ .text            0002a670 firmwareInfo
+ .bss             0020290a firstHP..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv.
+ .bss             00202909 firstVL..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv.
+ .appl            00018e94 fm_chdir
+ .appl            00018e40 fm_chdrive
+                  00000000 fm_checkvolume
+ .appl            00018fec fm_close
+                  00000000 fm_createdriver
+                  00000000 fm_createpartition
+                  00000000 fm_delete
+ .appl            00018d90 fm_delvolume
+                  00000000 fm_eof
+                  00000000 fm_filelength
+ .appl            00018f3c fm_findfirst
+ .appl            00018f98 fm_findnext
+                  00000000 fm_flush
+                  00000000 fm_format
+                  00000000 fm_ftruncate
+                  00000000 fm_get_oem
+                  00000000 fm_get_volume_count
+                  00000000 fm_get_volume_list
+                  00000000 fm_getattr
+ .appl            000192ec fm_getc
+ .appl            00018de4 fm_getcwd
+                  00000000 fm_getdcwd
+                  00000000 fm_getdrive
+ .appl            000190f8 fm_getfilesize
+                  00000000 fm_getfreespace
+ .appl            000193f0 fm_getlabel
+                  00000000 fm_getlasterror
+                  00000000 fm_getpartition
+                  00000000 fm_gettimedate
+                  00000000 fm_getversion
+ .appl            00018d2c fm_initvolume
+                  00000000 fm_initvolumepartition
+ .appl            00018ee8 fm_mkdir
+                  00000000 fm_move
+ .appl            00019040 fm_open
+ .appl            0001909c fm_openopt
+                  00000000 fm_putc
+ .appl            0001915c fm_read
+                  00000000 fm_releasedriver
+                  00000000 fm_rename
+ .appl            00019340 fm_rewind
+                  00000000 fm_rmdir
+ .appl            00019234 fm_seek
+ .appl            00019394 fm_setattr
+                  00000000 fm_seteof
+ .appl            00019454 fm_setlabel
+                  00000000 fm_settimedate
+                  00000000 fm_stat
+ .appl            00019298 fm_tell
+                  00000000 fm_truncate
+ .appl            000191c8 fm_write
+ .appl            00020eac fnGetTask
+ .appl            0001aa50 fn_chdir
+ .appl            0001e8ec fn_chdrive
+                  00000000 fn_checkvolume
+ .appl            0001fdc0 fn_close
+ .appl            0001e080 fn_createdriver
+                  00000000 fn_createpartition
+                  00000000 fn_delete
+ .appl            0001e3d8 fn_delvolume
+                  00000000 fn_eof
+                  00000000 fn_filelength
+ .appl            0001a7e0 fn_findfirst
+ .appl            0001a8cc fn_findnext
+                  00000000 fn_flush
+                  00000000 fn_format
+                  00000000 fn_ftruncate
+                  00000000 fn_get_oem
+                  00000000 fn_get_volume_count
+                  00000000 fn_get_volume_list
+                  00000000 fn_getattr
+ .appl            00020cec fn_getc
+ .appl            0001a68c fn_getcwd
+ .appl            0001a544 fn_getdcwd
+ .appl            0001e8cc fn_getdrive
+ .appl            0001c674 fn_getfilesize
+                  00000000 fn_getfreespace
+ .appl            0001c11c fn_getlabel
+                  00000000 fn_getpartition
+ .appl            00018d14 fn_gettaskID
+                  00000000 fn_gettimedate
+                  00000000 fn_getversion
+ .appl            0001c81c fn_init
+ .appl            0001e16c fn_initvolume
+ .appl            0001e338 fn_initvolumepartition
+ .appl            0001b040 fn_mkdir
+                  00000000 fn_move
+ .appl            0001b4b0 fn_open
+ .appl            0001c6b4 fn_openopt
+                  00000000 fn_putc
+ .appl            0001ff64 fn_read
+ .appl            0001e27c fn_releasedriver
+                  00000000 fn_rename
+ .appl            00020cc4 fn_rewind
+                  00000000 fn_rmdir
+ .appl            000209dc fn_seek
+ .appl            0001bfb8 fn_setattr
+                  00000000 fn_seteof
+ .appl            0001c39c fn_setlabel
+ .appl            0002108c fn_setlasterror
+ .appl            000210a0 fn_setlasterror_noret
+                  00000000 fn_settimedate
+                  00000000 fn_stat
+ .appl            00020c14 fn_tell
+                  00000000 fn_truncate
+ .appl            00020464 fn_write
+ .linklibs        00025b20 free
+ .rodata          0002e264 fs..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cmp3Util.
+ .data            00202620 g3567State..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CpwrDrv.
+ .bss             002028c0 gAccErr..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CrtcDrv.
+ .bss             002028cc gBaseTime..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CrtcDrv.
+ .data            0020265c gBitRateToBytesPerMSTab..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cmp3Util.
+ .data            00202622 gBlkReg0..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CledDrv.
+ .bss             00202738 gDataWritten..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .bss             00202908 gIsSleeping..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv.
+ .data            00202626 gLevels..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CledDrv.
+ .bss             00202b80 gPBTaskHandle..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .bss             002028f4 gPlayBackRate..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CaudDrv.
+ .bss             002028c4 gPrevPeriod..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CrtcDrv.
+ .bss             002028d0 gRtcSleeping..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CrtcDrv.
+ .bss             002028c8 gStartTime..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CrtcDrv.
+ .bss             00202730 gUSBRWEvtTime..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .bss             00202734 gUSBStartTime..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .bss             0020273b gVRChargePermitted..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .bss             0020273a gVRIndicateData..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .bss             00202739 gVRReset..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .rodata          0002df05 gVolumeMapping..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CaudDrv.
+ .bss             00206a48 g_multi
+ .appl            00022dc4 getEQ
+ .appl            00017044 getFileVer..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CpubFileUtil.
+ .appl            000173f0 getFileVersion..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CpubFileUtil.
+ .appl            00016954 get_cd
+ .appl            00016964 get_wp
+ .bss             00202910 hp.adcTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv..2
+ .appl            00015594 hpcActivateUSBPullup
+ .appl            0001554c hpcGoUSB
+ .appl            00015488 hpcInit
+ .appl            00015570 hpcReleaseUSB
+ .appl            000154fc hpcSense
+ .appl            000155f8 i2cInit
+                  00000000 i2cRead
+ .bss             002028f0 i2cSem..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Ci2cDrv.
+                  00000000 i2cSleep
+                  00000000 i2cWake
+ .appl            00015688 i2cWrite
+ .text            0002a628 infoOut..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl.
+ .bss             00202744 intState.ledStatus.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl..2
+ .text            0002b4b4 isMp3File..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CcacheHdlr.
+ .appl            000172b0 isUpdateAvailable..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CpubFileUtil.
+ .bss             002028ec lastLevel.hpcSense.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5ChpcDrv..0
+ .bss             00204fd8 lastTime.playback.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng..8
+ .appl            000151f4 ledInit
+                  00000000 ledSetGlobLevel
+ .appl            000152b0 ledSetLedLevel
+                  00000000 ledSleep
+ .text            0002a5a0 ledStatus..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl.
+ .text            00029f9c ledStatus..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+                  00000000 ledWake
+ .text            0002aa24 ls..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl.
+ .rodata          0002dcec m..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .text            00029f1c main
+ .text            00029e48 mainTask..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5C3356_main.
+ .linklibs        00025af0 malloc
+                  00000000 malloc_block_set..trg.2Farm4.2Fobjs.2Flibs.2Flibansi.2Fccmalloc.
+ .linklibs        000257b0 malloc_get_heap..trg.2Farm4.2Fobjs.2Flibs.2Flibansi.2Fccmalloc.
+ .linklibs        00025708 memcmp
+ .text            0002cac4 memcpy
+ .linklibs        00025644 memmove
+ .text            0002ca14 memset
+ .appl            000134e4 mmc_cmd..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .bss             00202888 mmc_drv..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .bss             00202864 mmc_dsc..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            00013cc0 mmc_getcsd..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            0001468c mmc_getphy..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            000145bc mmc_getstatus..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            0001414c mmc_initcard..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            000146ec mmc_initfunc
+ .appl            00013630 mmc_read..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            00013b84 mmc_readmultiplesector
+ .appl            00013b58 mmc_readsector
+ .appl            000146e0 mmc_release..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            000138b0 mmc_write..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            00013bd8 mmc_writemultiplesector
+ .appl            00013bac mmc_writesector
+ .bss             00202b84 mp3_Decoder..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .bss             00202bb0 mp3_Info..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .decoder         002020dc mp3d_Antialias
+ .decoderROM      000271d8 mp3d_BitBufAddAndRewind
+ .decoderROM      0002729c mp3d_BitBufDismissRest
+ .decoderROM      00027620 mp3d_BitBufEnsureBits
+ .decoderROM      0002774c mp3d_BitBufFlushBitsNoCheck
+ .decoderROM      00029a44 mp3d_BitBufGetBits
+ .decoderROM      00027168 mp3d_BitBufGetPosBits
+ .decoderROM      000275f4 mp3d_BitBufGetRemainigFrameBits
+ .decoderROM      0002760c mp3d_BitBufOnError
+ .decoderROM      000272a4 mp3d_BitBufSeekSync
+ .decoderROM      00027188 mp3d_BitBufSetPosition
+ .decoderROM      00029b0c mp3d_CopyBytes
+ .decoderROM      00029918 mp3d_CopyPCMSamplesStereo
+ .decoderROM      00027c28 mp3d_DecodeLayer1
+ .decoderROM      000284e8 mp3d_DecodeLayer2
+ .decoderROM      0002667c mp3d_DecodeLayer3
+ .decoderROM      00026f44 mp3d_FramHeaderGetSideInfoSizeBytes
+ .decoderROM      00026f64 mp3d_FrameHeaderCheckRestrictions
+ .decoderROM      00026fb0 mp3d_FrameHeaderCompare
+ .decoderROM      000270a0 mp3d_FrameHeaderDataSizeInBytes
+ .decoderROM      00026ff4 mp3d_FrameHeaderGetBitrateKbps
+ .decoderROM      00027034 mp3d_FrameHeaderGetSampleRateHz
+ .decoderROM      00027130 mp3d_FrameHeaderGetSamplesPerFrame
+ .decoderROM      00027058 mp3d_FrameHeaderSideInfoSizeInBytes
+ .decoderROM      000296d0 mp3d_GetScaleFactor
+ .decoderROM      00029bd8 mp3d_GetScaleFactorSizeMPEG2
+ .decoderROM      00029358 mp3d_GetSideInfo
+ .decoder         00201be4 mp3d_HuffmanDecode
+ .decoder         002018f0 mp3d_Hybrid
+ .decoderROM      00028f28 mp3d_JointStereo
+ .decoderROM      00028e28 mp3d_MSStereo
+ .decoderROM      00029cf4 mp3d_Preamplify
+ .decoder         0020221c mp3d_Reorder
+ .decoder         00200e00 mp3d_SubbandSynth
+ .decoderROM      00029204 mp3d_UnpackSfb
+ .decoderROM      00027764 mp3d_ZeroMem32
+ .rodata          0002f0cc mp3d_g_HuffmanTableSelector
+ .text            0002a1dc msCallback..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .bss             002028be msDriftCnt..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CtmrDrv.
+ .bss             002028b8 msIntTick..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CtmrDrv.
+ .appl            00017880 mst_bulk_rx_event
+ .appl            00017770 mst_bulk_tx_event
+ .appl            00017538 mst_ctrl_event
+ .bss             00202a30 mst_info..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cmst_main.
+ .data            00202698 mst_info_text..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Csimple_scsi.
+ .appl            00017c74 mst_init
+ .appl            00017c94 mst_init_dataton
+ .appl            00017ccc mst_process
+ .appl            00017c84 mst_req_bufsize_dataton
+ .appl            00017b10 mst_reset
+ .appl            000174e4 mst_reset_event
+ .appl            00017cb8 mst_set_vendorReq
+ .appl            00010e64 nak_ep_rx
+                  00000000 nak_ep_tx
+ .bss             0020277b new_address..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .text            0002ab28 openFileSystem..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl.
+ .data            00202654 osIsSleeping..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cport.
+ .appl            00023980 pbClose
+ .bss             00202b78 pbEventQueue..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .appl            000236e8 pbExecuteAndWait..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .appl            000238d0 pbInit
+ .appl            00023744 pbInitPlayMP3
+ .appl            000237b4 pbInitPlaySin
+ .appl            00023780 pbInitPlayWav
+                  00000000 pbPause
+ .appl            00023804 pbPlay
+ .appl            00023884 pbSetVolume
+ .appl            00023858 pbStop
+ .appl            00023540 pbTask..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .bss             00202b88 pi..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .text            0002ad60 pickupAppl
+ .text            0002acb0 pickupClose..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl.
+ .text            0002acf4 pickupInit..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpickupAppl.
+ .bss             002028d4 pioInput..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CpwrDrv.
+ .appl            000231c0 playback..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .bss             002028fc potdTaskHandle..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv.
+ .appl            00022b30 prdInfoGet
+ .appl            00022b70 prdInfoInit
+ .bss             00202b54 prdInfoRAMCpy..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CsetMng.
+                  00000000 prdInfoSet
+ .appl            00022af0 prdInfoStore
+ .appl            00022b40 prdInfoValidate
+ .appl            00023324 prepareStartMp3File..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .appl            00023478 prepareStartWavFile..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .bss             002028dc prevInput.pwrTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CpwrDrv..3
+ .appl            00021c7c prvAllocateTCBAndStack..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .appl            00021bdc prvCheckTasksWaitingTermination..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .appl            000224c4 prvCopyDataFromQueue..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cqueue.
+ .appl            000223f0 prvCopyDataToQueue..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cqueue.
+ .appl            00021cf4 prvDeleteTCB..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .appl            00021a88 prvIdleTask..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .appl            00021af0 prvInitialiseTCBVariables..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .appl            00021b60 prvInitialiseTaskLists..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .appl            000225cc prvIsQueueEmpty..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cqueue.
+ .appl            000225f8 prvIsQueueFull..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cqueue.
+ .appl            000228b0 prvSetupTimerInterrupt..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cport.
+ .appl            0002251c prvUnlockQueue..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cqueue.
+ .appl            000155c4 pup_on_off
+ .text            0002a460 puusbAppl
+ .text            0002a520 puusbBattChgStatus
+ .text            0002a3ac puusbClose..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .text            0002a3e4 puusbInit..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CpuusbAppl.
+ .appl            00022768 pvPortMalloc
+ .appl            00022cf8 pwrBattCharge
+ .appl            000150c8 pwrBattChargeEnable
+                  00000000 pwrDownRequest
+ .appl            00014da8 pwrDrvISR
+ .appl            00016ae4 pwrDrvISREntry
+ .appl            00014f6c pwrInit
+ .appl            00022d18 pwrIsBattChargeEnabled
+ .appl            00022ce4 pwrMngInit
+ .bss             002028d8 pwrSem..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CpwrDrv.
+ .appl            00014e10 pwrTask..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CpwrDrv.
+ .bss             00202b50 pxCurrentTCB
+ .bss             00202a68 pxDelayedTaskList..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202a6c pxOverflowDelayedTaskList..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .appl            000227bc pxPortInitialiseStack
+ .bss             00202b00 pxReadyTasksLists..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .appl            00023170 readWavFile..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .appl            00010e9c ready_ep_rx
+ .appl            00010e80 ready_ep_tx
+                  00000000 realloc
+ .appl            000151c0 resetMAX6964..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CledDrv.
+ .text            0002af74 rtcBaseReceived..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr.
+                  00000000 rtcClose
+ .appl            000149e0 rtcDrvISR
+ .appl            00016a64 rtcDrvISREntry
+ .appl            00014d1c rtcGetRtValue
+ .appl            00014c18 rtcInit
+                  00000000 rtcMSToTicks
+ .appl            00014cf4 rtcSetRtValue
+                  00000000 rtcSleep
+                  00000000 rtcWake
+ .bss             00202bd8 sampBuf0..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .bss             00203dd8 sampBuf1..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .text            0002d234 sbrk
+ .appl            0001597c sccInit..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CaudDrv.
+ .appl            00023fb0 scsi_check_cmd..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Csimple_scsi.
+ .appl            00024198 scsi_check_medium
+ .appl            00023f88 scsi_get_nlun
+ .appl            000253e0 scsi_get_remaining
+ .appl            00024184 scsi_get_state
+ .appl            000253c0 scsi_has_error
+ .bss             00204fdc scsi_info..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Csimple_scsi.
+ .appl            000242d4 scsi_init
+ .appl            000253f4 scsi_new_buffer
+ .appl            00024bcc scsi_process
+ .appl            00024074 scsi_set_error..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Csimple_scsi.
+ .appl            00024378 scsi_setup_command
+ .appl            00016f60 seekFileBlkHdr..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CpubFileUtil.
+ .text            0002aecc sendControlData..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr.
+ .appl            00012b44 send_handshake
+ .appl            0001035c send_zero_packet
+ .text            0002afd0 serialNumReceived..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr.
+ .appl            00010c38 set_config..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .appl            000108d4 setup_ep
+ .text            0002bcbc sin
+ .text            0002b670 skipFile..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CcacheHdlr.
+ .appl            000134a0 spiWaitBusy..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            00013460 spiWaitStartBit..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .appl            000167e0 spi_cs_hi
+ .appl            000167c8 spi_cs_lo
+ .appl            0001692c spi_get_baudrate
+ .appl            000167f8 spi_init
+ .appl            000166f4 spi_rx1
+ .appl            00016740 spi_rx512
+ .appl            000168ac spi_set_baudrate
+                  00000000 spi_sleep
+ .appl            00016598 spi_tx1
+ .appl            000165c0 spi_tx2
+ .appl            0001660c spi_tx4
+ .appl            00016664 spi_tx512
+                  00000000 spi_wake
+ .appl            00022fc8 spiritEQsettingCallback..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .appl            0002310c spiritMP3ReadCallback..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CaudMng.
+ .linklibs        00025730 sprintf
+ .linklibs        0002574c sputc..trg.2Farm4.2Fobjs.2Flibs.2Flibansi.2Fccsprntf.
+ .appl            00016be4 srlInit..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CsrlDrv.
+ .bss             00205038 srlIsInit..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CsrlDrv.
+ .appl            00016d50 srlSendString
+ .appl            00015904 startMCK..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CaudDrv.
+ .rodata          0002e004 str_config
+ .rodata          0002e030 str_interface
+ .rodata          0002dff4 str_manufacturer
+ .rodata          0002e068 str_product
+ .rodata          0002e04c str_serail_number
+ .linklibs        00025574 strcmp
+ .linklibs        0002551c strcpy
+ .rodata          0002dff0 string_descriptor0
+ .linklibs        00025504 strlen
+ .linklibs        000254d4 strncmp
+ .linklibs        00025410 strncpy
+ .text            0002b410 strnicmp
+ .appl            00023a68 synchsafeToNormal..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cmp3Util.
+ .bss             00202860 tBUSY..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+ .bss             0020285c tNAC..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cmmc.
+                  00000000 tmrClose
+ .appl            0001493c tmrGetMS
+                  00000000 tmrGetUS
+ .appl            0001485c tmrInit
+                  00000000 tmrSleep
+ .appl            00014960 tmrWaitMS
+                  00000000 tmrWaitUS
+                  00000000 tmrWake
+ .bss             0020292a traceBuf..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctrace.
+ .bss             00202a2d trace_mndx..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Cmst_main.
+ .text            0002aea4 transmitNull..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr.
+ .appl            00015a88 twiWrite..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CaudDrv.
+ .bss             00202764 txbuf.sendControlData.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr..1
+ .data            00202658 ulCriticalNesting
+ .linklibs        00025bb4 unsout..trg.2Farm4.2Fobjs.2Flibs.2Flibansi.2Fccvsprnt.
+ .bss             002028bc usDriftCnt..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CtmrDrv.
+ .bss             002028b4 usIntTicks..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CtmrDrv.
+ .appl            0001479c usTimerISR
+ .appl            000169d4 usTimerISREntry
+ .appl            00016518 usbISREntry
+ .text            0002ae78 usbRxCallback..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr.
+ .text            0002b380 usbVenReq_Init
+ .text            0002b3a0 usbVenReq_Maintenace
+ .appl            00012b70 usb_ack_config
+ .rodata          0002e0dc usb_callback_table
+ .appl            000122c4 usb_clr_halt
+ .rodata          0002e0ac usb_config_descriptor
+ .appl            00010560 usb_copy_from_ep..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .appl            000104fc usb_copy_to_ep..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .bss             00202778 usb_current_config..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .rodata          0002e098 usb_device_descriptor
+ .appl            000102dc usb_disable_ep_it
+ .appl            00010494 usb_ep_error
+ .appl            000103bc usb_ep_is_busy
+ .appl            00010420 usb_ep_is_halted
+                  00000000 usb_get_done
+                  00000000 usb_get_frame_ctr
+ .appl            00010390 usb_get_remaining
+                  00000000 usb_get_rx_plength
+ .appl            00012550 usb_get_rx_pptr
+ .appl            00010480 usb_get_state
+ .appl            0001070c usb_init
+ .appl            00012c10 usb_it_handler
+ .appl            000120f4 usb_receive
+ .appl            00010324 usb_restore_ep_it
+ .appl            00012490 usb_resume_rx
+ .appl            00012318 usb_resume_tx
+ .appl            00011a08 usb_send
+ .appl            00012230 usb_set_halt
+ .bss             00202779 usb_state..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .bss             0020277a usb_state_bf_suspend..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .appl            000125b4 usb_stm_ctrl0..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .appl            00010868 usb_stop
+ .appl            00010e38 usb_stop_ep_rx..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5Cusb.
+ .appl            00010e0c usb_stop_ep_tx
+ .rodata          0002e080 usb_string_descriptors
+                  00000000 usg_get_configuration
+ .bss             00202a74 uxCurrentNumberOfTasks..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202a8c uxMissedTicks..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+                  00000000 uxQueueMessagesWaiting
+                  00000000 uxQueueMessagesWaitingFromISR
+ .bss             00202a88 uxSchedulerSuspended..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+                  00000000 uxTaskGetNumberOfTasks
+ .bss             00202a98 uxTaskNumber..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202a70 uxTasksDeleted..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202a80 uxTopReadyPriority..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202a7c uxTopUsedPriority..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .text            00029e30 vApplicationIdleHook
+ .appl            0002293c vFreeRTOSTimerCall
+ .appl            00022628 vListInitialise
+ .appl            0002265c vListInitialiseItem
+ .appl            000226b0 vListInsert
+ .appl            00022670 vListInsertEnd
+ .appl            00022718 vListRemove
+                  00000000 vPortEndScheduler
+ .appl            000228cc vPortEnterCritical
+ .appl            000228f4 vPortExitCritical
+ .appl            00022794 vPortFree
+ .appl            00022a50 vPortPreemptiveTick
+ .appl            0002299c vPortStartFirstTask
+ .appl            000229cc vPortYieldProcessor
+ .appl            000223d0 vQueueDelete
+                  00000000 vTaskCleanUpResources
+ .appl            00021354 vTaskDelay
+                  00000000 vTaskDelayUntil
+ .appl            00021294 vTaskDelete
+                  00000000 vTaskEndScheduler
+ .appl            0002162c vTaskIncrementTick
+ .appl            00021a70 vTaskMissedYield
+ .appl            00021814 vTaskPlaceOnEventList
+ .appl            00021dfc vTaskPriorityDisinherit
+ .appl            00021d28 vTaskPriorityInherit
+                  00000000 vTaskPrioritySet
+                  00000000 vTaskResume
+ .appl            00021998 vTaskSetTimeOutState
+ .appl            00021404 vTaskStartScheduler
+                  00000000 vTaskSuspend
+ .appl            00021484 vTaskSuspendAll
+ .appl            0002175c vTaskSwitchContext
+ .appl            00023f98 valid_lun..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Csimple_scsi.
+ .appl            00017134 validateFile..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5CpubFileUtil.
+ .bss             00202750 vendor..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr.
+ .text            0002b034 vendorRequestHandler4hcc..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_3356.5CusbVenReqHdlr.
+ .bss             00202920 vl.adcTask.X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CadcDrv..6
+ .bss             002028f8 volumeRegShadow..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_driver.5CaudDrv.
+ .linklibs        0002576c vsprintf
+ .appl            00017ba8 wait_cbw
+ .bss             00202a9c xDelayedTaskList1..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202ab0 xDelayedTaskList2..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202a90 xMissedYield..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202a94 xNumOfOverflows..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202ac4 xPendingReadyList..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+                  00000000 xPortSleep
+ .appl            00022898 xPortStartScheduler
+                  00000000 xPortWakeup
+ .appl            00021eb8 xQueueCreate
+ .appl            00021f80 xQueueCreateMutex
+ .appl            00022200 xQueueGenericReceive
+ .appl            00022014 xQueueGenericSend
+ .appl            00022174 xQueueGenericSendFromISR
+                  00000000 xQueueIsQueueEmptyFromISR
+                  00000000 xQueueIsQueueFullFromISR
+                  00000000 xQueueReceiveFromISR
+ .bss             00202a84 xSchedulerRunning..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202aec xSuspendedTaskList..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .appl            000219bc xTaskCheckForTimeOut
+ .appl            000210bc xTaskGenericCreate
+ .appl            00021d14 xTaskGetCurrentTaskHandle
+                  00000000 xTaskGetTickCount
+                  00000000 xTaskIsTaskSuspended
+ .appl            000218cc xTaskRemoveFromEventList
+ .appl            000214a0 xTaskResumeAll
+                  00000000 xTaskResumeFromISR
+ .bss             00202ad8 xTasksWaitingTermination..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.
+ .bss             00202a78 xTickCount..X.3A.5CDokument.5CPCroot.5C33xx.5Cgh_3356.5Cobjs.5Clibs.5Cdbg_platform.5Ctasks.

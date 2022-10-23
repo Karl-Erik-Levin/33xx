@@ -1,0 +1,27 @@
+#!gbuild
+[Library]
+	-o objs\dbg_platform.a
+platform\audMng.c
+platform\evtMng.c
+platform\irMng.c
+platform\ledMng.c
+platform\pwrMng.c
+platform\setMng.c
+dbg_platform_rtos.gpj
+platform\hccfat\common.c
+platform\hccfat\fat.c
+platform\hccfat\fat_lfn.c
+platform\hccfat\fat_m.c
+platform\hccfat\port_f.c
+platform\hccusb\mst_main.c
+platform\hccusb\mst_usb_config.c
+platform\hccusb\simple_scsi.c
+platform\utilities\byteSwap.c
+platform\utilities\crc16CCITT.c
+platform\utilities\datatonIR.c
+platform\utilities\fifo.c
+platform\utilities\flash.c
+	-Onone
+platform\utilities\mp3Util.c
+platform\utilities\pubFileUtil.c
+platform\utilities\trace.c
