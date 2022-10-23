@@ -38,7 +38,7 @@
 #include "3356\puusbAppl.h"
 
 //---------------------------------DEFINES----------------------------------------
-#define SOFTWARE_VERSION	0x000901		// 0.9B1
+#define SOFTWARE_VERSION	0x000902		// 0.9B2
 
 //----------------------------GLOBAL VARIABLES------------------------------------
 
