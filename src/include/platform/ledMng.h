@@ -16,15 +16,18 @@
 
 //---------------------------------TYPEDEFS---------------------------------------
 typedef enum {
-	kLedMaint,
 	kLedInit,
 	kLedEnd,
 	kLedCenter,
-	kLedRing
+	kLedRing,
+	kLedCenterBlink,
+	kLedBattChg,
+	kLedUsbData
 } ledStt;
 
 //--------------------------------PROTOTYPS---------------------------------------
-void ledDisplay(ledStt newState);
+void ledMaint();						// Maintenace call at 200 Hz
+void ledDisplay(ledStt newState);		// Set new display mode
 
 
 #endif	//_ledMng_

@@ -18,78 +18,126 @@
 
 #include "platform\ledMng.h"
 
+//----------------------------GLOBAL VARIABLES------------------------------------
+static LongWord gMainLoopCnt;
+static ledStt ledState;
+
 //--------------------------------FUNCTIONS---------------------------------------
 void
-ledDisplay(ledStt newState)
+ledMaint()
 {
-	static ledStt ledState;
-	static LongWord cnt1, cnt2;
-
-	switch (newState) {
+	static LongWord internalLoop;
+	LongWord idx;
 	
-	case kLedMaint:
-		cnt1++;
+	if (gMainLoopCnt > 0) {
+		gMainLoopCnt++;
+		
 		switch (ledState) {
 		
-		case kLedMaint:
-			if (!(cnt2%100)) {
-				ledSetLedLevel(LEDI_Right, LEDD_LEVEL_MAX);
-			} else {
-				ledSetLedLevel(LEDI_Right, LEDD_LEVEL_MIN);
+		case kLedCenterBlink:
+			if (!(gMainLoopCnt%100)) {
+				if (!(internalLoop%2)) {
+					ledSetLedLevel(LEDI_Center, LEDD_LEVEL_MAX);
+				} else {
+					ledSetLedLevel(LEDI_Center, LEDD_LEVEL_MIN);
+				}
+				internalLoop++;
 			}
-			cnt2++;
 			break;
 		
 		case kLedCenter:
-			if (cnt1 >= 4) {
+			if (gMainLoopCnt >= 4) {
 				ledSetLedLevel(LEDI_Center, LEDD_LEVEL_MIN);
-				ledState = kLedMaint;
+				gMainLoopCnt = 0;								// Stop maint
 			}
 			break;
 		
 		case kLedRing:
-			if (cnt1 >= 21) {
-				for (cnt2=0; cnt2 < LEDD_NUM_RING_LEDS; cnt2++)
-					ledSetLedLevel(cnt2, LEDD_LEVEL_MIN);
-				ledState = kLedMaint;
-				cnt2 = 1;
-			} else if (cnt1 >= 14) {
-				for (cnt2=0; cnt2 < LEDD_NUM_RING_LEDS; cnt2++)
-					ledSetLedLevel(cnt2, LEDD_LEVEL_MAX);
-			} else if (cnt1 >= 7) {
-				for (cnt2=0; cnt2 < LEDD_NUM_RING_LEDS; cnt2++)
-					ledSetLedLevel(cnt2, LEDD_LEVEL_MIN);
+			if (gMainLoopCnt >= 21) {
+				for (idx=0; idx < LEDD_NUM_RING_LEDS; idx++)
+					ledSetLedLevel(idx, LEDD_LEVEL_MIN);
+				gMainLoopCnt = 0;								// Stop maint
+			} else if (gMainLoopCnt >= 14) {
+				for (idx=0; idx < LEDD_NUM_RING_LEDS; idx++)
+					ledSetLedLevel(idx, LEDD_LEVEL_MAX);
+			} else if (gMainLoopCnt >= 7) {
+				for (idx=0; idx < LEDD_NUM_RING_LEDS; idx++)
+					ledSetLedLevel(idx, LEDD_LEVEL_MIN);
+			}
+			break;
+			
+		case kLedBattChg:
+			if (!(gMainLoopCnt%50)) {							// Charge LED indication
+				ledSetLedLevel(LEDI_Front, internalLoop%6);		// 0..5
+				internalLoop++;
+			}
+			break;
+			
+		case kLedUsbData:
+			if (gMainLoopCnt > 200)
+				gMainLoopCnt = 0;								// Stop after 1 second
+			else if (!(gMainLoopCnt%10)) {						// Data LED indication
+				if (internalLoop%2)
+					ledSetLedLevel(LEDI_Front, LEDD_LEVEL_MAX);
+				else
+					ledSetLedLevel(LEDI_Front, LEDD_LEVEL_MIN);
+				
+				internalLoop++;
 			}
 			break;
 		}
-		break;
-		
+	}
+}
+
+void
+ledDisplay(ledStt newState)
+{
+	LongWord idx;
+	
+	switch (newState) {
+	
 	case kLedInit:
-		cnt1 = cnt2 = 0;
-		ledState = kLedMaint;
+	case kLedEnd:
+		gMainLoopCnt = 0;									// Stop maint
+		for (idx=0; idx < LEDD_NUM_RING_LEDS+1; idx++)		// All LED off
+			ledSetLedLevel(idx, LEDD_LEVEL_MIN);
 		break;
 		
-	case kLedEnd:
-		for (cnt1=0; cnt1 < LEDD_NUM_RING_LEDS+1; cnt1++)
-			ledSetLedLevel(cnt1, LEDD_LEVEL_MIN);
+	case kLedCenterBlink:
+		gMainLoopCnt = 1;									// Enable maint
+		ledState = kLedCenterBlink;
 		break;
 		
 	case kLedCenter:
 		ledSetLedLevel(LEDI_Center, LEDD_LEVEL_MAX);
-		for (cnt1=0; cnt1 < LEDD_NUM_RING_LEDS; cnt1++)
-			ledSetLedLevel(cnt1, LEDD_LEVEL_MIN);
-		cnt1 = 0;
-		cnt2 = 1;
+		for (idx=0; idx < LEDD_NUM_RING_LEDS; idx++)
+			ledSetLedLevel(idx, LEDD_LEVEL_MIN);
+			
+		gMainLoopCnt = 1;									// Enable maint
 		ledState = kLedCenter;
 		break;
 		
 	case kLedRing:
 		ledSetLedLevel(LEDI_Center, LEDD_LEVEL_MIN);
-		for (cnt2=0; cnt2 < LEDD_NUM_RING_LEDS; cnt2++)
-			ledSetLedLevel(cnt2, LEDD_LEVEL_MAX);
-		cnt1 = 0;
+		for (idx=0; idx < LEDD_NUM_RING_LEDS; idx++)
+			ledSetLedLevel(idx, LEDD_LEVEL_MAX);
+			
+		gMainLoopCnt = 1;									// Enable maint
 		ledState = kLedRing;
 		break;
+		
+	case kLedBattChg:
+		ledSetLedLevel(LEDI_Front, LEDD_LEVEL_MIN);
+		gMainLoopCnt = 1;									// Enable maint
+		ledState = kLedBattChg;
+		break;
+		
+	case kLedUsbData:
+		ledSetLedLevel(LEDI_Front, LEDD_LEVEL_MIN);
+		gMainLoopCnt = 1;									// Enable maint
+		ledState = kLedUsbData;
+		break;
+		
 	}
 }
 
