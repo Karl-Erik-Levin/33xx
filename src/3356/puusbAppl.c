@@ -37,16 +37,6 @@
 #define FLASH_TIME_AFTER_START  (1000 * 4)			// 4 seconds.
 #define CHARGE_DELAY			(1000 * 10)			// 10 seconds.
 
-//---------------------------------TYPEDEFS---------------------------------------
-typedef enum
-{
-	KLED_Maintenace,
-	KLED_Start,
-	KLED_Stop,
-	KLED_UsbData,
-	_KLED_NumLedState
-} LedState;
-
 //----------------------------GLOBAL VARIABLES------------------------------------
 static LongWord gUSBRWEvtTime;
 static LongWord gUSBStartTime;
@@ -56,79 +46,6 @@ static Boolean gVRIndicateData;				// From Vendor request messages
 static Boolean gVRChargePermitted;			// From Vendor request messages
 
 //--------------------------------FUNCTIONS---------------------------------------
-#if 0
-static void
-displayTime()
-{
-	LongWord rt = rtcGetRtValue();
-	Byte sec, min, hour;
-	
-	sec = (rt/4)    % 60;
-	min = (rt/240)  % 60;
-	hour= (rt/14400)% 24;
-	
-	TRACE_USB(("%02d:%02d:%02d\r", hour, min, sec);)
-}
-#endif
-
-static void
-ledStatus(LedState newState)
-{
-	static LongWord cnt1 = 0, cnt2 = 0;
-	static LedState intState;
-	Word i;
-	LongWord now;
-
-	// State transision
-	switch (newState) {
-	case KLED_Maintenace:
-		now = tmrGetMS();
-		if (DIFF(gUSBRWEvtTime, now) > FLASH_TIME_AFTER_DATA &&
-			DIFF(gUSBStartTime, now) > FLASH_TIME_AFTER_START)
-			intState = KLED_Maintenace;
-		break;
-		
-	case KLED_Start:
-		for (i=0; i<=LEDI_Front; i++)
-			ledSetLedLevel(i, LEDD_LEVEL_MIN);
-		gUSBRWEvtTime = gUSBStartTime = tmrGetMS();
-		intState = KLED_UsbData;
-		break;
-		
-	case KLED_Stop:
-		for (i=0; i<=LEDI_Front; i++)
-			ledSetLedLevel(i, LEDD_LEVEL_MIN);
-		intState = KLED_Stop;						// No more updating of LEDs
-		break;
-		
-	case KLED_UsbData:
-		intState = KLED_UsbData;
-		break;
-	}
-	
-	// Update LED
-	switch (intState) {
-	case KLED_Maintenace:
-		if (!(cnt1%50)) {
-			ledSetLedLevel(LEDI_Front, cnt2%6);		// 0..5
-			cnt2++;
-		}
-		cnt1++;	
-		break;
-	
-	case KLED_UsbData:
-		if (!(cnt1%10)) {
-			if (cnt2%2)
-				ledSetLedLevel(LEDI_Front, LEDD_LEVEL_MAX);
-			else
-				ledSetLedLevel(LEDI_Front, LEDD_LEVEL_MIN);
-			
-			cnt2++;
-		}
-		cnt1++;	
-		break;
-	}
-}
 
 /*******************************************************************************
  * Function:	msCallback
@@ -141,7 +58,7 @@ msCallback(hcc_u8 caller)
 	case STSCSI_READ_10:
 	case STSCSI_WRITE_10:
 		gUSBRWEvtTime = tmrGetMS();		// Current time.
-		ledStatus(KLED_UsbData);
+		ledDisplay(kLedUsbData);
 		
 	    if (caller == STSCSI_WRITE_10) {
 			gDataWritten = true;
@@ -220,10 +137,22 @@ chargeAllowed()
 		   );
 }
 
+/*******************************************************************************
+ * Function:	puusbBattChgStatus
+ * Summary:		Not used for the moment
+ *
+ *******************************************************************************/
+void
+puusbBattChgStatus(chgSt *status)
+{
+	status->chargingAllowed  = pwrIsBattChargeEnabled(); 
+	status->batteryIsCharged = false; 
+}
+
 static void
 puusbClose()
 {
-	ledStatus(KLED_Stop);				// All LED off and no more updating of LEDs
+	ledDisplay(kLedEnd);				// All LED off and no more updating of LEDs
 
 	usb_stop();							// Stop USB driver
 	vTaskDelay(10);
@@ -246,7 +175,7 @@ puusbInit(void *bigBuffer)
 	gVRIndicateData	  = false;
 	gVRChargePermitted= true;
 	
-	ledStatus(KLED_Start);				// All LED off
+	ledDisplay(kLedInit);				// All LED off
 	pwrBattCharge(false);				// Disable battery charger
 	hpcGoUSB();							// Set USB/Audio switch to USB mode
 	vTaskDelay(10);
@@ -264,7 +193,7 @@ puusbAppl(void *bigBuffer)
 	
 	puusbInit(bigBuffer);
 	
-	while (hpcSense(true)==EHPC_USB && !gVRReset) {
+	while (hpcSense(true)==EHPC_USB && !gVRReset) {		// Main USB loop, 200 Hz
 		vTaskDelay(5);
 		cpuKickWatchDog();
 
@@ -281,16 +210,100 @@ puusbAppl(void *bigBuffer)
 		}
 		
 		pwrBattCharge(chargeAllowed());
-		ledStatus(KLED_Maintenace);
+		ledMaint();
 	}
 
 	puusbClose();
 }
 
-void
-puusbBattChgStatus(chgSt *status)
+
+
+
+
+
+#if 0
+static void
+displayTime()
 {
-	status->chargingAllowed  = pwrIsBattChargeEnabled(); 
-	status->batteryIsCharged = false; 
+	LongWord rt = rtcGetRtValue();
+	Byte sec, min, hour;
+	
+	sec = (rt/4)    % 60;
+	min = (rt/240)  % 60;
+	hour= (rt/14400)% 24;
+	
+	TRACE_USB(("%02d:%02d:%02d\r", hour, min, sec);)
 }
+
+//---------------------------------TYPEDEFS---------------------------------------
+typedef enum
+{
+	KLED_Maintenace,
+	KLED_Start,
+	KLED_Stop,
+	KLED_UsbData,
+	_KLED_NumLedState
+} LedState;
+
+static void
+ledStatus(LedState newState)
+{
+	static LongWord cnt1 = 0, cnt2 = 0;
+	static LedState intState;
+	Word i;
+	LongWord now;
+
+	// State transision
+	switch (newState) {
+	case KLED_Maintenace:
+		now = tmrGetMS();
+		if (DIFF(gUSBRWEvtTime, now) > FLASH_TIME_AFTER_DATA &&
+			DIFF(gUSBStartTime, now) > FLASH_TIME_AFTER_START)
+			intState = KLED_Maintenace;
+		break;
+		
+	case KLED_Start:
+		for (i=0; i<=LEDI_Front; i++)
+			ledSetLedLevel(i, LEDD_LEVEL_MIN);
+		gUSBRWEvtTime = gUSBStartTime = tmrGetMS();
+		intState = KLED_UsbData;
+		break;
+		
+	case KLED_Stop:
+		for (i=0; i<=LEDI_Front; i++)
+			ledSetLedLevel(i, LEDD_LEVEL_MIN);
+		intState = KLED_Stop;						// No more updating of LEDs
+		break;
+		
+	case KLED_UsbData:
+		intState = KLED_UsbData;
+		break;
+	}
+	
+	// Update LED
+	switch (intState) {
+	case KLED_Maintenace:
+		if (!(cnt1%50)) {							// Charge LED indication
+			ledSetLedLevel(LEDI_Front, cnt2%6);		// 0..5
+			cnt2++;
+		}
+		cnt1++;	
+		break;
+	
+	case KLED_UsbData:
+		if (!(cnt1%10)) {							// Data LED indication
+			if (cnt2%2)
+				ledSetLedLevel(LEDI_Front, LEDD_LEVEL_MAX);
+			else
+				ledSetLedLevel(LEDI_Front, LEDD_LEVEL_MIN);
+			
+			cnt2++;
+		}
+		cnt1++;	
+		break;
+	}
+}
+
+
+#endif
 

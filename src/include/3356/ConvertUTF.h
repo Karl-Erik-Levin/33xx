@@ -86,25 +86,22 @@
     All should be unsigned values to avoid sign extension during
     bit mask & shift operations.
 ------------------------------------------------------------------------ */
-// Kalle #ifndef _WIN32
-// Kalle #include <stdint.h>
-// Kalle #endif
-// Kalle #ifdef __uint32_t_defined
-// Kalle typedef uint32_t	UTF32;		/* at least 32 bits */
-// Kalle typedef uint16_t	UTF16;		/* at least 16 bits */
-// Kalle typedef uint8_t		UTF8;		/* typically 8 bits */
-// Kalle #else
+
+#ifndef _convertutf_
+#define _convertutf_
+
+
 typedef unsigned long	UTF32;	/* at least 32 bits */
 typedef unsigned short	UTF16;	/* at least 16 bits */
 typedef unsigned char	UTF8;	/* typically 8 bits */
-// Kalle #endif
-//typedef unsigned char	Boolean;	/* 0 or 1 */
+
 
 /* Some fundamental constants */
 #define UNI_REPLACEMENT_CHAR	(UTF32)0x0000FFFD
 #define UNI_MAX_BMP				(UTF32)0x0000FFFF
 #define UNI_MAX_UTF16			(UTF32)0x0010FFFF
 #define UNI_MAX_UTF32			(UTF32)0x7FFFFFFF
+
 
 typedef enum {
 	conversionOK,				/* conversion successful */
@@ -118,10 +115,6 @@ typedef enum {
 	lenientConversion
 } ConversionFlags;
 
-/* This is for C++ and does no harm in C */
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 ConversionResult ConvertUTF8toUTF16 (
 		const UTF8** sourceStart, const UTF8* sourceEnd,
@@ -154,8 +147,4 @@ ConversionResult ConvertISO88591toUTF8(
 
 Boolean isLegalUTF8Sequence(const UTF8 *source, const UTF8 *sourceEnd);
 
-#ifdef __cplusplus
-}
-#endif
-
-/* --------------------------------------------------------------------- */
+#endif	//_convertutf_

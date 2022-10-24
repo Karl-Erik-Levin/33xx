@@ -14,9 +14,7 @@
 **
 **/
 
-//---------------------------------INCLUDES---------------------------------------
-
-
+//--------------------------------- INCLUDES ---------------------------------------
 #include <ctype.h>
 #include "MFLib\Dataton_Types.h"
 #include "MFLib\TraceAssert.h"
@@ -26,7 +24,7 @@
 #include "3356\cacheHdlr.h"
 #include "3356\ID3Parser.h"
 
-//---------------------------------DEFINES----------------------------------------
+//--------------------------------- DEFINES ----------------------------------------
 #define FOLDERLEVEL_TO_SCAN			4
 #define MAX_GENRE_NAME_LENGTH      16
 #define MAX_GENRES                 32
@@ -37,9 +35,7 @@
 #define TRACK_DB_FILE_NAME DB_DIR "TRACKS.DB"
 #define GENRE_DB_FILE_NAME DB_DIR "GENRES.DB"
 
-
 //-------------------------------- TYPES -------------------------------------
-
 typedef struct _cacheEntry {
 	optFile fileInfo;
 	Word transponderId;
@@ -47,13 +43,10 @@ typedef struct _cacheEntry {
 	char genre[MAX_GENRE_NAME_LENGTH];
 } CacheEntry;
 
-
-
 typedef struct _genreEntry {
 	char genreName[MAX_GENRE_NAME_LENGTH];
 	Word genreId;
 } GenreEntry;
-
 
 typedef struct _activeGenresTab {
 	Boolean allActive;
@@ -61,25 +54,14 @@ typedef struct _activeGenresTab {
 	Word activeGenres[MAX_ACTIVE_GENRES];
 } ActiveGenresTab;
 
-
 //-------------------------------- GLOBALS -------------------------------------
-
 static GenreEntry gGenres[MAX_GENRES];
 static ActiveGenresTab gActiveGenres;
 
-
-
-//--------------------------- LOCAL FUNCTION DECL ------------------------------
-
+//-------------------------------- PROTOTYPS ----------------------------------
 static void cacheRebuild();
-static Boolean skipFile( F_FIND* ffind );
-static Boolean AddToDb( char* fileName );
-
-static Word GetGenreId( char* genreName );   // Genre name in UTF-8
-
-
-//--------------------------------FUNCTIONS---------------------------------------
-
+static Boolean skipFile(F_FIND* ffind);
+static void addToDb(char* fileName);
 
 /*******************************************************************************
  * Function:	strnicmp
@@ -105,13 +87,11 @@ static Word GetGenreId( char* genreName );   // Genre name in UTF-8
 }
 
 
-
 /*******************************************************************************
  * Function:	isMp3File
  * Summary:		Maybe should this function open file and look for mp3 frame 
  *				header
  *******************************************************************************/
-
 static Boolean
 isMp3File(char *fileName)
 {
@@ -127,13 +107,14 @@ isMp3File(char *fileName)
 	return false;
 }
 
+
 /*******************************************************************************
- * Function:	cacheInit
+ * Function:	CacheInit
  * Summary:		Open cahce file. If parameter rebuildCache is true a new scan
  *				of the file tree is be performed and a new cache file is created
  *******************************************************************************/
 void
-cacheInit(Boolean rebuildCache)
+CacheInit(Boolean rebuildCache)
 {
 	if ( rebuildCache ) {
 		cacheRebuild();
@@ -143,23 +124,25 @@ cacheInit(Boolean rebuildCache)
 			
 }
 
+
 /*******************************************************************************
- * Function:	cacheClose
+ * Function:	CacheClose
  * Summary:		Deallocate resources
  *******************************************************************************/
 void
-cacheClose(void)
+CacheClose(void)
 {
 
 }
 
+
 /*******************************************************************************
- * Function:	cacheLookup
+ * Function:	CacheLookup
  * Summary:		Return true if a file is found and parameters for open file
  *				is returned in parameter *file
  *******************************************************************************/
 Boolean
-cacheLookup(Word transponder, Boolean executeFileCmd, optFile *file)
+CacheLookup(Word transponder, Boolean executeFileCmd, optFile *file)
 {
 	F_FIND find;
 	Boolean fileFound = false;
@@ -182,60 +165,68 @@ cacheLookup(Word transponder, Boolean executeFileCmd, optFile *file)
 }
 
 
-
-
 /*******************************************************************************
  * Function:	cacheRebuild
  * Summary:		Traverses the directory tree and parses ID3-tags in all mp3
  *              files found, and stores them in a database. 
  *******************************************************************************/
-
-static void cacheRebuild( char* sourceDir, int depth )
+static void
+cacheRebuild(char* sourceDir, int depth)
 {
 	F_FIND ffind;
 	
-	if ( depth > FOLDERLEVEL_TO_SCAN ) {
+	if (depth > FOLDERLEVEL_TO_SCAN) {
 		return;
 	}
 	
-	f_chdir( sourceDir );
+	f_chdir(sourceDir);
 	
-	if ( f_findfirst( ROOT_DIR "*.*", &ffind ) == 0 ) {
+	if (f_findfirst(ROOT_DIR "*.*", &ffind) == 0) {
 		do {
-			if ( skipFile( &ffind ) ) {
+			if (skipFile(&ffind)) {
 				continue;
 			}
-			if ( ( ffind.attr & F_ATTR_DIR ) != 0 ) {
-				cacheRebuild( ffind.filename, depth + 1 );
+			if ((ffind.attr & F_ATTR_DIR) != 0) {
+				cacheRebuild(ffind.filename, depth + 1);
 			}
-			if ( isMp3File( ffind.filename ) ) {
-				AddToDb( ffind.filename );
+			if (isMp3File(ffind.filename)) {
+				addToDb(ffind.filename);
 			}
-		} while ( f_findnext( &ffind ) == 0 );
+		} while (f_findnext(&ffind) == 0);
 	}				
-	f_chdir( ".." );		
+	f_chdir("..");		
 }
 
 
-
-static Boolean skipFile( F_FIND* ffind )
+/*******************************************************************************
+ * Function:	skipFile
+ * Summary:		
+ *               
+ *******************************************************************************/
+static Boolean
+skipFile(F_FIND* ffind)
 {
-	return ( ffind->filename[0] == '.' ) ||
-	       ( ( ffind->attr & F_ATTR_HIDDEN ) != 0 );
+	return (ffind->filename[0] == '.') ||
+	       ((ffind->attr & F_ATTR_HIDDEN) != 0);
 }
 
 
-static Boolean AddToDb( char* fileName )
+/*******************************************************************************
+ * Function:	addToDb
+ * Summary:		
+ *               
+ *******************************************************************************/
+static void
+addToDb(char* fileName)
 {
 	ID3Stream id3Str;
-	CacheEntry cahceEntry;
 	
-	if ( !ID3Open( fileName, &id3Str ) ) {
-		return false;
+	if (!ID3Open(fileName, &id3Str)) {
+		return;
 	}
 	
-	while ( ID3Next( &id3Str ) ) {
-		if ( strnicmp( id3Str.tag.tagId, "TCON", 4 ) == 0 ) {
+	while (ID3Next(&id3Str)) {
+		if (strnicmp(id3Str.tag.tagId, "TCON", 4) == 0) {
 		}
 	}		
 }

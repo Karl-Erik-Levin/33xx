@@ -60,26 +60,22 @@
 							if (f_write(t,1,2,pF) != 2) return 0;}
 
 
-/*-----------------------------------------------------------------------------
+/*******************************************************************************
+ * Function:	WAV_writeHeader
+ * Summary:		Writes standard WAV header in the beginning of the file
+ *
+ * Param:		pF              F_FILE handle
+ *				nSampleRateHz   Sample rate value (for ex. 44100)
+ *				nChannels       Number of channels (1,2...)
+ *				nBitsPerSample  Number of bits per sample (8,16...)
+ *				nFileSize       Total file size in bytes (assume file was opened with WAV_writerOpen())
 
-  Function:    WAV_writeHeader                                         [STATIC]
-
-*/ /**
-
-  Writes standard WAV header in the beginning of the file.
-
-  @param pF              F_FILE handle
-  @param nSampleRateHz   Sample rate value (for ex. 44100)
-  @param nChannels       Number of channels (1,2...)
-  @param nBitsPerSample  Number of bits per sample (8,16...)
-  @param nFileSize       Total file size in bytes (assume file was opened with 
-                         WAV_writerOpen())
-
-  @return 1 in case of success, or 0 in case of write error or invalid params.
-
-*/ /*
------------------------------------------------------------------------------*/
-static int WAV_writeHeader(F_FILE * pF
+ * 
+ * Return:		1 in case of success, or 0 in case of write error or invalid params
+ * 
+ *******************************************************************************/
+static int
+WAV_writeHeader(F_FILE * pF
                           ,unsigned long nSampleRateHz
                           ,unsigned int  nChannels
                           ,unsigned int  nBitsPerSample
@@ -105,33 +101,28 @@ static int WAV_writeHeader(F_FILE * pF
 }
 
 
-
-/*-----------------------------------------------------------------------------
-
-  Function:    WAV_writerOpen
-
-*/ /**
-
-  Creates new file for writing and writes dummy WAV header.
-  Overvrites existing file.
-
-  @param pFileName  File name to create.
-
-  @return opened F_FILE handle.
-
-*/ /*
------------------------------------------------------------------------------*/
-F_FILE * WAV_writerOpen(const char * pFileName)
+/*******************************************************************************
+ * Function:	WAV_writerOpen
+ * Summary:		Creates new file for writing and writes dummy WAV header.
+ *				Overvrites existing file
+ *
+ * Param:		pFileName	File name to create
+ *
+ * Return:		opened F_FILE handle
+ * 
+ *******************************************************************************/
+F_FILE *
+WAV_writerOpen(const char * pFileName)
 {
   F_FILE * pF = f_open(pFileName, "w");
-  if (pF)
-  {
-    if (!WAV_writeHeader(pF, 0, 0, 0, WAV_HEADER_SIZE))
-    {
+  
+  if (pF) {
+    if (!WAV_writeHeader(pF, 0, 0, 0, WAV_HEADER_SIZE)) {
       f_close(pF);
       pF = NULL;
     }
   }
+  
   return pF;
 }
 

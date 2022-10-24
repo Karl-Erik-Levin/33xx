@@ -17,14 +17,9 @@
   1.0.0   07/24/2002   ASP     Initial Version
 
 ******************************************************************************/
-#ifndef WAVWRITER_H
-#define WAVWRITER_H
+#ifndef _wavwriter_
+#define _wavwriter_
 
-//#include <stdio.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 typedef struct _wavProp {
 	unsigned long nSampleRateHz;	//Sample rate, Hz (44100, ...)
@@ -53,22 +48,15 @@ F_FILE * WAV_writerOpen(const char * pFileName);
   WAV_writerClose(pWavFile, 44100, 2, 16); //CD-format audio
 
 */
-int WAV_writerClose(F_FILE * pF                    //F_FILE handle
-                   ,unsigned long nSampleRateHz  //Sample rate, Hz (44100, ...)
-                   ,unsigned int  nChannels      //Number of channels (1,2 ...)
-                   ,unsigned int  nBitsPerSample //Bits per sample (8,16 ...)
-                   ,long          lBytesWritten  //Bytes, written to file (-1 = Autodetect)
+int WAV_writerClose(F_FILE * pF						//F_FILE handle
+                   ,unsigned long nSampleRateHz		//Sample rate, Hz (44100, ...)
+                   ,unsigned int  nChannels			//Number of channels (1,2 ...)
+                   ,unsigned int  nBitsPerSample	//Bits per sample (8,16 ...)
+                   ,long          lBytesWritten		//Bytes, written to file (-1 = Autodetect)
                    );
-
-
 
 F_FILE * WAV_readerOpen(const char * pFileName, wavProp *prop);
 int WAV_readerClose(F_FILE *fp);
 
 
-#ifdef __cplusplus
-}
-#endif
-
-
-#endif //WAVWRITER_H
+#endif // _wavwriter_

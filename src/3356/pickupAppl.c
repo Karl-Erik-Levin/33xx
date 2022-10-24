@@ -18,11 +18,13 @@
 #include "driver\audDrv.h"
 #include "driver\cpuDrv.h"
 #include "driver\hpcDrv.h"
-#include "driver\ledDrv.h"
+//#include "driver\ledDrv.h"
 #include "driver\hccfat\mmc.h"
 
 #include "platform\audMng.h"
 #include "platform\evtMng.h"
+#include "platform\ledMng.h"
+#include "platform\radMng.h"
 #include "platform\setMng.h"
 #include "platform\FreeRTOS\FreeRTOS.h"
 #include "platform\FreeRTOS\task.h"
@@ -34,22 +36,6 @@
 #include "3356\cacheHdlr.h"
 
 //--------------------------------FUNCTIONS---------------------------------------
-static void
-ledStatus(void)
-{
-	static LongWord cnt1 = 0, cnt2 = 0;
-
-	if (!(cnt1%10)) {
-		if (cnt2%2)
-			ledSetLedLevel(LEDI_Center, LEDD_LEVEL_MAX);
-		else
-			ledSetLedLevel(LEDI_Center, LEDD_LEVEL_MIN);
-		
-		cnt2++;
-	}
-	cnt1++;	
-}
-
 static void
 infoOut(F_FILE *fp, char *text)
 {
@@ -119,7 +105,7 @@ dispatchKBEvent(EMEvent *evt)
 		switch (evt->sw.key) {
 		case ESWK_KeyAction:
 			TRACE_GDE(("ESWK_KeyAction\r\n");)
-			if (cacheLookup(1234, true, &file)) {
+			if (CacheLookup(1234, true, &file)) {
 				pbInitPlayMP3(file.startCluster, file.fileSize);
 				pbPlay();
 			}
@@ -260,6 +246,10 @@ closeFileSystem()
 	f_releaseFS(fn_gettaskID());
 }
 
+/*******************************************************************************
+ * Function:	pickupClose
+ * Summary:		
+ *******************************************************************************/
 static void
 pickupClose()
 {
@@ -268,13 +258,18 @@ pickupClose()
 	for (idx=0; idx < LEDD_NUM_RING_LEDS+1; idx++)
 		ledSetLedLevel(idx, LEDD_LEVEL_MIN);
 
+	rdmClose();
 	pbClose();
 	audClose();
-	cacheClose();
+	CacheClose();
 	
 	closeFileSystem();
 }
 
+/*******************************************************************************
+ * Function:	pickupInit
+ * Summary:		
+ *******************************************************************************/
 static void
 pickupInit(void *bigBuffer)
 {
@@ -286,22 +281,27 @@ pickupInit(void *bigBuffer)
 	}
 	
 	firmwareInfo(true);				// Firmware info to file
-	cacheInit(true);
+	CacheInit(true);
 	
 	audInit();
 	pbInit(bigBuffer);
+	rdmInit();
 	
 	pbSetVolume(30);
 	audSpeakerAmp(false);			// Disable speaker
-	
 }
 
+/*******************************************************************************
+ * Function:	pickupAppl
+ * Summary:		
+ *******************************************************************************/
 void
 pickupAppl(void *bigBuffer)
 {
 	EMEvent evt;
 	
 	pickupInit(bigBuffer);
+	ledDisplay(kLedCenterBlink);
 	ls("A:/");
 
 	do {
@@ -315,7 +315,8 @@ pickupAppl(void *bigBuffer)
 			}
 		}
 		
-		ledStatus();
+		ledMaint();
+		rdmMaint();
 	} while (hpcSense() != EHPC_USB);
 	
 	pickupClose();

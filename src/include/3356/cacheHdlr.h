@@ -17,21 +17,20 @@
 #ifndef _cacheHdlr_
 #define _cacheHdlr_
 
+
+//-------------------------------- INCLUDES ---------------------------------------
 #include "MFLib\Dataton_Types.h"
 
-
-
-//--------------------------------TYPEDEFS---------------------------------------
+//-------------------------------- TYPEDEFS ---------------------------------------
 typedef struct _optFile {
 	LongWord	startCluster;
 	LongWord	fileSize;
 } optFile;
 
-
-//--------------------------------PROTOTYPS---------------------------------------
-void cacheInit(Boolean rebuildCache);
-void cacheClose(void);
-Boolean cacheLookup(Word transponder, Boolean executeFileCmd, optFile *file);
+//-------------------------------- PROTOTYPS ---------------------------------------
+void CacheInit(Boolean rebuildCache);
+void CacheClose(void);
+Boolean CacheLookup(Word transponder, Boolean executeFileCmd, optFile *file);
 
 
 #endif	// _cacheHdlr_

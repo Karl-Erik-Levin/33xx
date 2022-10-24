@@ -16,7 +16,6 @@
 #include "driver\hccusb\usb.h"
 
 #include "platform\setMng.h"
-#include "platform\utilities\byteSwap.h"
 #include "platform\evtMng.h"
 #include "platform\hccusb\usb_mst.h"
 
@@ -52,9 +51,8 @@ static venRcvData vendor;
 //--------------------------------FUNCTIONS---------------------------------------
 /*******************************************************************************
  * Function:	usbRxCallback
- * Returns:		void
- *
  * Summary:		We are in interrupt mode and cant store recevied data in flash
+ *
  *******************************************************************************/
 static enum callback_state
 usbRxCallback(void)
@@ -68,8 +66,6 @@ usbRxCallback(void)
 
 /*******************************************************************************
  * Function:	transmitNull
- * Returns:		void
- *
  * Summary:		A NULL (or zero length packet) is transmitted in acknowledge
  *				the reception of certain events from the host.
  *******************************************************************************/
@@ -81,8 +77,6 @@ transmitNull(void)
 
 /*******************************************************************************
  * Function:	controlSendStall
- * Returns:		void
- *
  * Summary:		A stall condition is forced each time the host makes a
  *				request that is not supported
  *******************************************************************************/
@@ -94,9 +88,8 @@ controlSendStall(void)
 
 /*******************************************************************************
  * Function:	sendControlData
- * Returns:		void
- *
  * Summary:		Setup the Tx buffer to send data in response to a control request.
+ *
  *******************************************************************************/
 static void
 sendControlData(
@@ -114,9 +107,8 @@ sendControlData(
 
 /*******************************************************************************
  * Function:	controlBeginRXData
- * Returns:		void
- *
  * Summary:		Setup receive data from USB control endpoint
+ *
  *******************************************************************************/
 static void
 controlBeginRXData(
@@ -133,9 +125,8 @@ controlBeginRXData(
 
 /*******************************************************************************
  * Function:	rtcBaseReceived
- * Returns:		void
- *
  * Summary:		
+ *
  *******************************************************************************/
 static void 
 rtcBaseReceived(
@@ -154,9 +145,8 @@ rtcBaseReceived(
 
 /*******************************************************************************
  * Function:	serialNumReceived
- * Returns:		void
- *
  * Summary:		
+ *
  *******************************************************************************/
 static void 
 serialNumReceived(
@@ -176,9 +166,8 @@ serialNumReceived(
 
 /*******************************************************************************
  * Function:	vendorRequestHandler4hcc
- * Returns:		void
- *
  * Summary:		HCC interface for vendor request handler
+ *
  *******************************************************************************/
 static void
 vendorRequestHandler4hcc(hcc_u8 *pdata)
@@ -318,11 +307,11 @@ vendorRequestHandler4hcc(hcc_u8 *pdata)
 
 /*******************************************************************************
  * Function:	USBVenReq_Init
- * Returns:		void
- *
  * Summary:		Initialize USBVendor Requests handler
+ *
  *******************************************************************************/
-void usbVenReq_Init()
+void
+usbVenReq_Init()
 {
 	// Global variable to defualt value
 	vendor.rxInBuf = false;
@@ -332,10 +321,11 @@ void usbVenReq_Init()
 
 /*******************************************************************************
  * Function:	usbVenReq_Maintenace
- *
  * Summary:		Store received data from USB host
+ *
  *******************************************************************************/
-void usbVenReq_Maintenace(void)
+void
+usbVenReq_Maintenace(void)
 {
 	if (vendor.rxInBuf)
 	{

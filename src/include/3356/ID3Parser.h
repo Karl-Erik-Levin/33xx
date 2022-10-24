@@ -13,19 +13,17 @@
 #define _id3parser_
 
 
+//-------------------------------- INCLUDES ---------------------------------------
 #include "MFLib\Dataton_Types.h"
-#include "platform/hccfat/api_f.h"
+#include "platform\hccfat\api_f.h"
 
-
-
+//-------------------------------- TYPEDEF ---------------------------------------
 typedef struct ID3Tag_ {
 	char tagId[4];
 	LongWord size;
 	Word flags;
 	LongWord dataStartPos;
 } ID3Tag;
-
-
 
 typedef struct ID3Stream_ {
 	F_FILE* file;
@@ -35,12 +33,11 @@ typedef struct ID3Stream_ {
 	ID3Tag tag;
 } ID3Stream;
 
-
-
-Boolean ID3Open( char* fileName, ID3Stream* id3Str );
-Boolean ID3Close( ID3Stream* id3Str );
-Boolean ID3Next( ID3Stream* id3Str );
-Boolean ID3ReadTagData( ID3Stream* id3Str, Byte* buf, Word bufSize );
+//-------------------------------- PROTOTYPS ---------------------------------------
+Boolean ID3Open(char* fileName, ID3Stream* id3Str);
+Boolean ID3Close(ID3Stream* id3Str);
+Boolean ID3Next(ID3Stream* id3Str);
+Boolean ID3ReadTagData(ID3Stream* id3Str, Byte* buf, Word bufSize);
 
 
 
