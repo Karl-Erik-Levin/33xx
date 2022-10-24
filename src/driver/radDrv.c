@@ -5,7 +5,7 @@
 ** The chip is comunicating over I2C, it need a reference clock 32768 Hz
 ** and it also have RDS
 **
-** (C)Copyright 2006 Dataton Utvecklings AB, All Rights Reserved.
+** (C)Copyright 2022 Dataton Utvecklings AB, All Rights Reserved.
 **
 ** Created	22-09-10	Kalle
 ** 
