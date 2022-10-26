@@ -52,15 +52,15 @@
 													//		connect COM_ to ANO_. AOR has 1M pulldown resistor to GND.
 #define DBGU_RX					AT91C_PA9_DRXD		// PA9  --- Debug connector pin 1
 #define DBGU_TX					AT91C_PA10_DTXD		// PA10 --- Debug connector pin 3 (TracePrintf)
-#define SI4721_RESET_PIN		AT91C_PIO_PA11		// PA11 OUT Radion Reset, Active low
+#define SI4703_RESET_PIN		AT91C_PIO_PA11		// PA11 OUT Radion Reset, Active low
 #define I2S_LRCLK_PIN			AT91C_PA15_TF		// PA15 SCC LRCLK
 #define I2S_BCLK_PIN			AT91C_PA16_TK		// PA16 SCC BCLK
 #define I2S_DATA_PIN			AT91C_PA17_TD		// PA17 SCC DATA
 #define POWD_BATT_CHARGE_IND	AT91C_PIO_PA22		// PA22 IN  BATT CHG IND, Low indicates when battery charge current
 													//			has dropped to ten percent of its programmed value (C/10).
 #define USB_PULLUP_CONTROL_PIN	AT91C_PIO_PA24		// PA24 OUT Controll USB PullUp, Active low
-#define RADIO_32KHZ_CLK_PIN		AT91C_PA26_TIOA2	// PA26 OUT Radio 32 kHz clk
-#define	SI4721_INT				AT91C_PIO_PA28		// PA28 IN  Radio GPIO2/INT
+#define SI4703_32KHZ_CLK_PIN	AT91C_PA26_TIOA2	// PA26 OUT Radio 32 kHz clk
+#define	SI4703_INT				AT91C_PIO_PA28		// PA28 IN  Radio GPIO2/INT
 #define KB_RIGHT_PIN			AT91C_PIO_PA29		// PA29 IN  RIGHT Switch, Active low
 #define KB_LEFT_PIN				AT91C_PIO_PA30		// PA30 IN  LEFT Switch, Active low
 

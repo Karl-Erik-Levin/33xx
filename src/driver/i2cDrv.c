@@ -34,13 +34,13 @@ typedef struct _DeviceFlags
 {
 	Byte addr;
 	LongWord mmrFlags;
-}DeviceFlags;
+} DeviceFlags;
 
 //------------------------------GLOBAL VARIABLES----------------------------------
 // Device address and size of internal device address for our devices on I2C bus
 static DeviceFlags deviceFlags[_EI2CD_NumDevices] =
 {
-	0x63, 0,							// 0x20, EI2CD_4721 FM Transmitter and receiver
+	0x63, 0,							// 0x20, EI2CD_4703 FM Transmitter and receiver
 	0x13, AT91C_TWI_IADRSZ_1_BYTE,		// 0x26, EI2CD_9850 Audio DAC
 	0x20, AT91C_TWI_IADRSZ_1_BYTE,		// 0x40, EI2CD_6964 LEDs
 	0x09, 0,							// 0x12, EI2CD_3567	Power/Battery Manager

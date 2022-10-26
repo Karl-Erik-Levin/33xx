@@ -63,8 +63,8 @@ ledInit(void)
 }
 
 /*******************************************************************************
- * Function:	ledInit
- * Summary:		Initiate LED driver
+ * Function:	ledSetGlobLevel
+ * Summary:		
  *******************************************************************************/
 void
 ledSetGlobLevel(Byte level)
@@ -73,8 +73,8 @@ ledSetGlobLevel(Byte level)
 }
 
 /*******************************************************************************
- * Function:	ledInit
- * Summary:		Initiate LED driver
+ * Function:	ledSetLedLevel
+ * Summary:		
  *******************************************************************************/
 void
 ledSetLedLevel(LEDDIndex ledIX, Byte ledLevel)
@@ -86,8 +86,8 @@ ledSetLedLevel(LEDDIndex ledIX, Byte ledLevel)
 }
 
 /*******************************************************************************
- * Function:	ledInit
- * Summary:		Initiate LED driver
+ * Function:	ledWake
+ * Summary:		
  *******************************************************************************/
 void
 ledWake()
@@ -96,8 +96,8 @@ ledWake()
 }
 
 /*******************************************************************************
- * Function:	ledInit
- * Summary:		Initiate LED driver
+ * Function:	ledSleep
+ * Summary:		
  *******************************************************************************/
 void
 ledSleep()
@@ -112,7 +112,7 @@ ledSleep()
 #include "driver\tmrDrv.h"
 
 //------------------------------GLOBAL VARIABLES----------------------------------
-static Byte gLevels[9]  = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xFf};
+static Byte gLevels[9]  = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
 static Byte gBlkReg0[2] = {0xff, 0xff};
 
 //--------------------------------FUNCTIONS---------------------------------------

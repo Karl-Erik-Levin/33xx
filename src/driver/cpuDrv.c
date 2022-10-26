@@ -50,7 +50,7 @@ cpuInitWatchDog(void)
 	// Setup Watchdog period to 3.00 seconds (=0x2FF,  Max=0xFFF ==> 16 seconds)
 	// and set Watchdog reset enable
 		
-	AT91C_BASE_WDTC->WDTC_WDMR= AT91C_WDTC_WDIDLEHLT | AT91C_WDTC_WDDBGHLT | AT91C_WDTC_WDRSTEN | 0x2ff << 16 | 0x2ff;
+	AT91C_BASE_WDTC->WDTC_WDMR = AT91C_WDTC_WDIDLEHLT | AT91C_WDTC_WDDBGHLT | AT91C_WDTC_WDRSTEN | 0x2ff << 16 | 0x2ff;
 }
 
 void

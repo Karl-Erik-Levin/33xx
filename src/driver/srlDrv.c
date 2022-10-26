@@ -60,8 +60,7 @@ void srlSendString(char *buffer)
 	if (!srlIsInit)
 		srlInit();
 
-    while(*buffer != '\0')
-	{
+    while(*buffer != '\0') {
 		AT91F_US_PutChar((AT91PS_USART)AT91C_BASE_DBGU, *buffer++);
 		while (!AT91F_US_TxReady((AT91PS_USART)AT91C_BASE_DBGU))
 			;		// Wait for char to be sent

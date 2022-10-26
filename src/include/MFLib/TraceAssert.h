@@ -39,6 +39,7 @@ extern void
 	#define TRACE_HPC(x) 						// hpcDrv.c
 	#define TRACE_PWR(x) 						// pwrDrv.c
 	#define TRACE_RTC(x) 						// rtcDrv.c
+	#define TRACE_RAD(x)						// radMgr.c
 #else
 	// NoOp versions of the above macros
 	#define ASSERT(t,s)		((void)0)
@@ -56,6 +57,7 @@ extern void
 	#define TRACE_HPC(x) 		// hpcDrv.c
 	#define TRACE_PWR(x) 		// pwrDrv.c
 	#define TRACE_RTC(x) 		// rtcDrv.c
+	#define TRACE_RAD(x)						// radMgr.c
 #endif
 
 #endif // _TraceAssert_

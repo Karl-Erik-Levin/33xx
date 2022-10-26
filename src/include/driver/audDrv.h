@@ -40,6 +40,19 @@ void audFlush();
 Boolean audPlayBuffer(short *samples, LongWord numSamples);
 LongWord audGetBufferCount();
 
+void audEnableRadio(void);
+void audDisableRadio(void);
+
+typedef enum {
+	EADU_PlaybackManager = 0,
+	EADU_RadioManager = 1
+} EADUser;
+
+void audRegUser(EADUser user);
+void audUnregUser(EADUser user);
+
+
+
 #endif  // _audDrv_
 
 

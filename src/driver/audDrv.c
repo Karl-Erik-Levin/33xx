@@ -14,7 +14,8 @@
 ** - SCC I/O module, used to transfer audio data to MAX9850.
 ** - US1 I/O module, the uart baudrate generator is used to generate master clock to MAX9850.
 **
-** Created 09-09-24	Kalle
+** Created  09-09-24	Kalle
+** Modifyed 22-09-06    Kalle	Implement radio support
 **
 ** (C) Copyright Dataton AB 2009, All Rights Reserved
 **
@@ -90,6 +91,8 @@ static const Byte gVolumeMapping[] =
 };
 
 static LongWord gPlayBackRate;
+static Boolean	gRadioAudioReq = false;
+static Byte		gADUsage = 0;
 static Byte		volumeRegShadow;
 static Boolean  audSleeping;
 
@@ -98,19 +101,21 @@ extern void audDrvISREntry();
 void audDrvISR(void);
 
 //--------------------------------FUNCTIONS---------------------------------------
-/* SSC interrupt service routine */
 #pragma ghs nothumb
+/*******************************************************************************
+ * Function:	audDrvISR
+ *
+ * Summary:		SSC interrupt service routine
+ *******************************************************************************/
 void
 audDrvISR()
 {
-	if (AT91F_PDC_IsNextTxEmpty(AT91C_BASE_PDC_SSC))
-	{
+	if (AT91F_PDC_IsNextTxEmpty(AT91C_BASE_PDC_SSC)) {
 		// If we have a queue of buffers to send it will be here to send next
 		//	AT91F_PDC_SetNextTx(AT91C_BASE_PDC_SSC, (char *)req->sampleData, req->numSamples);
 	}
 
-	if (AT91F_PDC_IsTxEmpty(AT91C_BASE_PDC_SSC))
-	{
+	if (AT91F_PDC_IsTxEmpty(AT91C_BASE_PDC_SSC)) {
 		AT91F_SSC_DisableIt(AT91C_BASE_SSC, SCC_INTERRUPTS);
 	}
 	
@@ -120,7 +125,11 @@ audDrvISR()
 	AT91C_BASE_AIC->AIC_EOICR = 0;
 }
 
-/* Setup master clock for the 9850 */
+/*******************************************************************************
+ * Function:	startMCK
+ *
+ * Summary:		Setup master clock for the 9850
+ *******************************************************************************/
 static void
 startMCK()
 {
@@ -137,7 +146,11 @@ startMCK()
     AT91C_BASE_US1->US_CR = AT91C_US_TXEN;
 }
 
-/* Initialize SCC interface to talk to the MAX 9850 */
+/*******************************************************************************
+ * Function:	sccInit
+ *
+ * Summary:		Initialize SCC interface to talk to the MAX 9850
+ *******************************************************************************/
 static void
 sccInit()
 {
@@ -190,7 +203,11 @@ sccInit()
 				audDrvISREntry); 
 } 
 
-/* Write a byte to a register at the 9850 */
+/*******************************************************************************
+ * Function:	twiWrite
+ *
+ * Summary:		Write a byte to a register at the 9850
+ *******************************************************************************/
 static void
 twiWrite(
     Byte reg,            // The register to write to
@@ -199,9 +216,15 @@ twiWrite(
 	i2cWrite(EI2CD_9850, reg, &value, 1);
 }
 
+/*******************************************************************************
+ * Function:	audInitInt
+ * Summary:		
+ *******************************************************************************/
 static void
 audInitInt()
 {
+	Byte enableReg;
+	
 	volumeRegShadow |= DA_SLEW;						// ENABLE_VOLUME_SKEW, Allow smooth volume changed.
 	audSpeakerAmp(false);							// Disable speaker.
 	
@@ -239,21 +262,31 @@ audInitInt()
 	twiWrite(MAX9850_General_Purpose, 0x01);		// Enabled ZDEN
 	vTaskDelay(20);
 
-	twiWrite(MAX9850_Enable, 0xFD);					// Enable DAC, power, clock, charge pump, etc.
+	enableReg = gRadioAudioReq ? 0xFF : 0xFD;		// Enable linein or not
+	twiWrite(MAX9850_Enable, enableReg);			// Enable DAC, power, clock, charge pump, etc.
 	vTaskDelay(40);
 }
 
+/*******************************************************************************
+ * Function:	audInit
+ * Summary:		
+ *******************************************************************************/
 void
 audInit()
 {
 	volumeRegShadow	= 0;
 	audSleeping     = false;
 	gPlayBackRate   = AD_PLAYBACK_RATE_MIN;
+	gADUsage		= 0;
 	
 	audInitInt();
 	twiWrite(MAX9850_Volume, 0);					// Volume off
 }
 
+/*******************************************************************************
+ * Function:	audClose
+ * Summary:		
+ *******************************************************************************/
 void
 audClose()
 {
@@ -261,21 +294,26 @@ audClose()
 	audSleep();
 }
 
-/* Enable or disable speaker amplifier */
+/*******************************************************************************
+ * Function:	audSpeakerAmp
+ *
+ * Summary:		Enable or disable speaker amplifier
+ *******************************************************************************/
 void
 audSpeakerAmp(Boolean enable)
 {
 	AT91F_PIO_CfgOutput(AT91C_BASE_PIOA, AD_SPEAKER_CTRL_PIN);
+	
 	if (enable)
-	{
 		AT91F_PIO_SetOutput(AT91C_BASE_PIOA, AD_SPEAKER_CTRL_PIN);
-	}
 	else
-	{
 		AT91F_PIO_ClearOutput(AT91C_BASE_PIOA, AD_SPEAKER_CTRL_PIN);
-	}
 }
 
+/*******************************************************************************
+ * Function:	audSetMute
+ * Summary:		
+ *******************************************************************************/
 void 
 audSetMute(Boolean mute)
 {
@@ -285,25 +323,29 @@ audSetMute(Boolean mute)
 		volumeRegShadow &=~DA_MUTE;
 }
 
+/*******************************************************************************
+ * Function:	audSetVolume
+ * Summary:		
+ *******************************************************************************/
 void 
 audSetVolume(Word volume)
 {
 	Word sendVolume;
 	
 	if (volume > AD_VOLUME_MAX)
-	{
 		volume  = AD_VOLUME_MAX;
-	}
 
 	sendVolume = MAX9850_VOLUME_MAX - gVolumeMapping[volume * MAX9850_VOLUME_MAX / AD_VOLUME_MAX];
 	volumeRegShadow  = (volumeRegShadow & (DA_MUTE | DA_SLEW)) | sendVolume;
 
 	if (!audSleeping)
-	{
 		twiWrite(MAX9850_Volume, volumeRegShadow);
-	}
 }
 
+/*******************************************************************************
+ * Function:	audSetPlaybackRate
+ * Summary:		
+ *******************************************************************************/
 void 
 audSetPlaybackRate(Word samplesPerSec)
 {
@@ -320,12 +362,16 @@ audSetPlaybackRate(Word samplesPerSec)
 	}			
 }
 
+/*******************************************************************************
+ * Function:	audSleep
+ * Summary:		
+ *******************************************************************************/
 void
 audSleep()
 {
-	if (!audSleeping)
-	{
+	if (!audSleeping) {
 		audSleeping = true;
+		
 		/* Wait for playback to finish */
 		while (!AT91F_PDC_IsTxEmpty(AT91C_BASE_PDC_SSC))
 			;
@@ -339,11 +385,14 @@ audSleep()
 	}
 }
 
+/*******************************************************************************
+ * Function:	audWake
+ * Summary:		
+ *******************************************************************************/
 void
 audWake()
 {
-	if (audSleeping)
-	{
+	if (audSleeping) {
 		audSleeping = false;
 		
 		audInitInt();
@@ -353,7 +402,12 @@ audWake()
 	}
 }
 
-/* Calculate the number of samples waiting to be transfered to the MAX 9850 */
+/*******************************************************************************
+ * Function:	audGetBufferCount
+ *
+ * Summary:		Calculate the number of samples waiting to be transfered
+ *				to the MAX 9850
+ *******************************************************************************/
 LongWord
 audGetBufferCount()
 {
@@ -373,6 +427,10 @@ audGetBufferCount()
 	return r;
 }
 
+/*******************************************************************************
+ * Function:	audFlush
+ * Summary:		
+ *******************************************************************************/
 void
 audFlush()
 {
@@ -384,6 +442,10 @@ audFlush()
    portEXIT_CRITICAL();
 }
 
+/*******************************************************************************
+ * Function:	audPlayBuffer
+ * Summary:		
+ *******************************************************************************/
 Boolean
 audPlayBuffer(short *sampleData, LongWord numSamples)
 {
@@ -404,6 +466,61 @@ audPlayBuffer(short *sampleData, LongWord numSamples)
 	return retStatus;
 }
 
+/*******************************************************************************
+ * Function:	audRegUser
+ * Summary:		
+ *******************************************************************************/
+void
+audRegUser(EADUser user)
+{
+	gADUsage |= 1 << user;
+	if (gADUsage)
+	{
+		audWake();
+	}
+}
+
+/*******************************************************************************
+ * Function:	audUnregUser
+ * Summary:		
+ *******************************************************************************/
+void
+audUnregUser(EADUser user)
+{
+	gADUsage &= ~(1 << user);
+	if (!gADUsage)
+	{
+		audSleep();
+	}
+}
+
+/*******************************************************************************
+ * Function:	audEnableRadio
+ * Summary:		
+ *******************************************************************************/
+void
+audEnableRadio(void)
+{
+	gRadioAudioReq = true;
+
+	if (!audSleeping) {
+		twiWrite(MAX9850_Enable, 0xFF);    		// Enable LIN
+	}
+}
+
+/*******************************************************************************
+ * Function:	audDisableRadio
+ * Summary:		
+ *******************************************************************************/
+void
+audDisableRadio(void)
+{
+	gRadioAudioReq = false;
+
+	if (!audSleeping) {
+		twiWrite(MAX9850_Enable, 0xFD);    		// Disable LIN
+	}
+}
 
 
 
@@ -419,7 +536,7 @@ audPlayBuffer(short *sampleData, LongWord numSamples)
 
 
 
-
+//****************************************************************************
 #if 0
 Boolean
 audPlayBuffer(short *sampleData, LongWord numSamples)

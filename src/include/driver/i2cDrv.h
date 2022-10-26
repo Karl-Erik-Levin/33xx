@@ -18,7 +18,7 @@
 //---------------------------------DEFINES----------------------------------------
 typedef enum
 {
-	EI2CD_4721,			// FM Radio
+	EI2CD_4703,			// FM Radio
 	EI2CD_9850,			// Audio D/A
 	EI2CD_6964,			// LEDs
 	EI2CD_3567,			// Power/Battery Manager

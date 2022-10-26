@@ -28,7 +28,7 @@ typedef struct _irdaTrans
 {
 	Byte	msgSize;				// Messages size
 	Byte	currPos;				// Current position in buf
-	Byte	buf[IR_MESSAGE_SIZE];		// Buffer to hold messages
+	Byte	buf[IR_MESSAGE_SIZE];	// Buffer to hold messages
 	Word	dataBits;				// Hold byte during transmit
 	Boolean irPwr;					// IrDA transmission power, true=high
 } irdaTrans; 
