@@ -7,7 +7,7 @@
 **
 ** (C) Copyright Dataton AB 2010, All Rights Reserved
 **
-**/
+**/ 
 //---------------------------------INCLUDES---------------------------------------
 #include "SpiritMP3Decoder.h"
 #include "MFLib\Dataton_Types.h"
