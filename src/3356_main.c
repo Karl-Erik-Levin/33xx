@@ -3,7 +3,8 @@
 ** Start system and handle switching between application modes
 ** 
 **
-** Created 10-10-30	Kalle
+** Created	10-10-30	Kalle
+** Modifyed	23-06-19	New version number
 **
 ** (C) Copyright Dataton AB 2010, All Rights Reserved
 **
@@ -38,7 +39,7 @@
 #include "3356\puusbAppl.h"
 
 //---------------------------------DEFINES----------------------------------------
-#define SOFTWARE_VERSION	0x000901		// 0.9B1
+#define SOFTWARE_VERSION	0x000902		// 0.9B2
 
 //----------------------------GLOBAL VARIABLES------------------------------------
 
